@@ -28,12 +28,12 @@ export const Sidebar: React.FC = () => {
       <div>
         <div className="px-6 mb-8">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded bg-primary-container border border-outline-variant flex items-center justify-center text-secondary font-bold">
-              IO
+            <div className="w-8 h-8 rounded bg-primary-container border border-outline-variant flex items-center justify-center text-secondary font-bold text-xs tracking-tighter">
+              OX
             </div>
             <div>
               <h1 className="font-display text-headline-sm font-semibold text-on-surface text-lg leading-tight">
-                InvestOps AI
+                Onyx Operations
               </h1>
               <p className="font-mono-label text-[11px] text-on-surface-variant uppercase tracking-wider">
                 Institutional Grade

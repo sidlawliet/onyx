@@ -29,7 +29,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <div className="max-w-md w-full border border-outline-variant bg-surface-container-lowest rounded-lg p-8 shadow-2xl flex flex-col gap-6">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-on-surface">InvestOps AI</h1>
+          <h1 className="text-2xl font-bold text-on-surface">Onyx Operations</h1>
           <p className="text-xs text-on-surface-variant uppercase tracking-wider font-mono mt-1">
             Institutional Login
           </p>

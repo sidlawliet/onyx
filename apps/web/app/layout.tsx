@@ -5,7 +5,7 @@ import { Sidebar } from '@/components/layout/Sidebar';
 import { Header } from '@/components/layout/Header';
 
 export const metadata: Metadata = {
-  title: 'InvestOps AI - Institutional Investment Control Plane',
+  title: 'Onyx Operations - Institutional Investment Control Plane',
   description: 'AI-assisted, human-in-the-loop portfolio management platform',
 };
 
