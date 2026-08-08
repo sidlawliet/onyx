@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "InvestOps AI API"
+    PROJECT_NAME: str = "Onyx Operations API"
     API_V1_STR: str = "/api/v1"
     SECRET_KEY: str = os.getenv("SECRET_KEY", "investops-secret-key-change-in-production-2026")
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 1 day
@@ -11,7 +11,7 @@ class Settings(BaseSettings):
 
     # Database
     DATABASE_URL: str = os.getenv(
-        "DATABASE_URL", "postgresql+psycopg://investops:investops@localhost:5432/investops"
+        "DATABASE_URL", "sqlite:///./investops_demo.db"
     )
 
     # CORS

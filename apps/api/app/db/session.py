@@ -7,17 +7,24 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from apps.api.app.db.base import Base
 
-DEFAULT_DATABASE_URL = "postgresql+psycopg://investops:investops@localhost:5432/investops"
+DEFAULT_DATABASE_URL = "sqlite:///./investops_demo.db"
 
 DATABASE_URL = os.getenv("DATABASE_URL", DEFAULT_DATABASE_URL)
 
-engine = create_engine(
-    DATABASE_URL,
-    pool_pre_ping=True,
-    pool_size=10,
-    max_overflow=20,
-    echo=os.getenv("SQL_ECHO", "false").lower() == "true",
-)
+if DATABASE_URL.startswith("sqlite"):
+    engine = create_engine(
+        DATABASE_URL,
+        connect_args={"check_same_thread": False},
+        echo=os.getenv("SQL_ECHO", "false").lower() == "true",
+    )
+else:
+    engine = create_engine(
+        DATABASE_URL,
+        pool_pre_ping=True,
+        pool_size=10,
+        max_overflow=20,
+        echo=os.getenv("SQL_ECHO", "false").lower() == "true",
+    )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

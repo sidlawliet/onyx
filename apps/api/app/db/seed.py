@@ -607,9 +607,12 @@ def seed_demo_data(session: Session) -> dict[str, UUID]:
 
 
 if __name__ == "__main__":
+    from apps.api.app.db.session import create_db_tables
+    create_db_tables()
     db = SessionLocal()
     try:
         res = seed_demo_data(db)
         print(f"Successfully seeded InvestOps demo database: {res}")
     finally:
         db.close()
+
