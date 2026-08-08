@@ -1,3 +1,4 @@
+const { withReticle } = require('@reticlehq/next');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -11,4 +12,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withReticle(nextConfig);

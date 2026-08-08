@@ -1,3 +1,4 @@
+import { ReticleDev } from './reticle-dev';
 import type { Metadata } from 'next';
 import './globals.css';
 import { AuthProvider } from '@/lib/auth-context';
@@ -28,7 +29,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-background text-on-surface antialiased flex min-h-screen overflow-x-hidden">
+      <body className="bg-background text-on-surface antialiased flex min-h-screen overflow-x-hidden">{process.env.NODE_ENV === 'development' ? <ReticleDev /> : null}
         <AuthProvider>
           <Sidebar />
           <div className="ml-[240px] flex-1 flex flex-col min-w-0">
