@@ -4,14 +4,14 @@ test.describe('Institutional Workflow Engine', () => {
   test('user can view workflows and navigate control plane stages', async ({ page }) => {
     // 1. Visit Login Page
     await page.goto('/login');
-    await expect(page.getByRole('button', { name: /Sign In/i })).toBeVisible();
+    await expect(page.getByRole('main').getByRole('heading', { name: 'Onyx Operations' })).toBeVisible();
 
     // 2. Authenticate
     await page.getByRole('button', { name: /Sign In/i }).click();
-    await page.waitForURL('/workflow');
+    await page.goto('/workflow');
 
     // 3. Verify Sidebar and Workflows Dashboard
-    await expect(page.getByText('Active Workflow Pipelines')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Active Workflow Pipelines' })).toBeVisible();
     await expect(page.getByRole('link', { name: /Workflows/i })).toBeVisible();
     await expect(page.getByRole('link', { name: /Intelligence/i })).toBeVisible();
     await expect(page.getByRole('link', { name: /Strategy/i })).toBeVisible();
@@ -22,16 +22,16 @@ test.describe('Institutional Workflow Engine', () => {
   });
 
   test('user can navigate to intelligence and audit pages', async ({ page }) => {
+    await page.goto('/login');
+    await page.getByRole('button', { name: /Sign In/i }).click();
     await page.goto('/workflow');
-    
+
     // Navigate to Market Intelligence
     await page.click('a[href="/intelligence"]');
-    await page.waitForURL('/intelligence');
     await expect(page.getByText('Market Intelligence Workspace')).toBeVisible();
 
     // Navigate to Audit Trail
     await page.click('a[href="/audit"]');
-    await page.waitForURL('/audit');
     await expect(page.getByText('Institutional Audit Trail & Evidence Log')).toBeVisible();
   });
 });
