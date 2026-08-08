@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onyx Portfolio Monitoring</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#352f2f",
+                      "background": "#12131a",
+                      "on-secondary": "#002e6a",
+                      "surface-tint": "#c8c6c8",
+                      "on-tertiary-fixed-variant": "#4c4545",
+                      "tertiary-container": "#0c0808",
+                      "on-surface": "#e3e1ec",
+                      "surface-bright": "#383941",
+                      "on-secondary-container": "#e6ecff",
+                      "on-secondary-fixed": "#001a42",
+                      "surface-container-low": "#1a1b22",
+                      "inverse-surface": "#e3e1ec",
+                      "surface-container": "#1e1f26",
+                      "tertiary-fixed": "#ebe0df",
+                      "surface-variant": "#33343c",
+                      "error-container": "#93000a",
+                      "surface": "#12131a",
+                      "on-primary-fixed": "#1c1b1d",
+                      "on-tertiary-fixed": "#1f1a1a",
+                      "secondary-fixed-dim": "#adc6ff",
+                      "surface-dim": "#12131a",
+                      "outline-variant": "#47464a",
+                      "on-tertiary-container": "#7f7777",
+                      "primary-container": "#09090b",
+                      "secondary-container": "#0566d9",
+                      "secondary-fixed": "#d8e2ff",
+                      "on-primary": "#313032",
+                      "on-error-container": "#ffdad6",
+                      "on-error": "#690005",
+                      "on-primary-container": "#7a787b",
+                      "on-secondary-fixed-variant": "#004395",
+                      "on-surface-variant": "#c8c5ca",
+                      "outline": "#919095",
+                      "tertiary": "#cec4c4",
+                      "secondary": "#adc6ff",
+                      "inverse-on-surface": "#2f3038",
+                      "primary-fixed": "#e5e1e4",
+                      "surface-container-high": "#292931",
+                      "inverse-primary": "#5f5e60",
+                      "surface-container-highest": "#33343c",
+                      "on-background": "#e3e1ec",
+                      "error": "#ffb4ab",
+                      "primary": "#c8c6c8",
+                      "surface-container-lowest": "#0d0e15",
+                      "on-primary-fixed-variant": "#474649",
+                      "tertiary-fixed-dim": "#cec4c4",
+                      "primary-fixed-dim": "#c8c6c8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "row-height-standard": "40px",
+                      "container-padding": "24px",
+                      "component-gap-md": "8px",
+                      "unit": "8px",
+                      "component-gap-sm": "4px",
+                      "row-height-dense": "32px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "mono-label": [
+                              "Geist"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "table-data": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "mono-label": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "table-data": [
+                              "13px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "450"
+                              }
+                      ],
+                      "headline-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #12131a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #33343c; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #47464a; 
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest text-secondary dark:text-secondary font-body-md text-body-md w-[240px] h-screen fixed left-0 top-0 border-r border-outline-variant flex flex-col h-full py-container-padding z-20 hidden md:flex">
+<div class="px-gutter mb-8">
+<h1 class="font-display text-display text-on-surface tracking-tighter flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-headline-sm" data-icon="account_balance">account_balance</span>
+</div>
+                Onyx
+            </h1>
+<p class="font-mono-label text-mono-label text-on-surface-variant mt-1 uppercase tracking-widest">Institutional Platform</p>
+</div>
+<ul class="flex flex-col gap-1 px-2 flex-grow">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+                    Workflows
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+                    Intelligence
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+                    Strategy
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+                    Approvals
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="play_circle">play_circle</span>
+                    Execution
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-secondary border-r-2 border-secondary bg-secondary-container/10 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+                    Monitoring
+                </a>
+</li>
+</ul>
+<div class="px-gutter mt-auto pb-4">
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-container border border-outline-variant">
+<img class="w-8 h-8 rounded object-cover border border-outline-variant" data-alt="A small, professional avatar of a financial analyst wearing a dark suit, set against a dark grey background in a minimalist, high-end corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUGYThJd5S4IdcANNBnenCW6WBElUL2LETD7d-M9jS6tv_lIXdsvARvltUta-uYYk1LMYClLI2lZtGznAWrcTMGTQmsZjndBHdrOZtijGMkiiZ1_viAAzqaWDRVdfJDVORBQvUSxcBQAWIPTUgFgeN1yNELFIU1bzYRlBR4iOnakI23bIyORgdRYwwbodU2pfeh33wH6pTD4CVoS8a9yfxeFgaPLSdpN6hOIKQbo0_5UbefvdsRBXF"/>
+<div class="flex flex-col">
+<span class="font-table-data text-table-data text-on-surface">J. Doe</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant">Admin</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface text-primary dark:text-primary font-headline-sm text-headline-sm fixed top-0 right-0 w-full md:w-[calc(100%-240px)] h-row-height-standard border-b border-outline-variant flex justify-between items-center px-gutter md:ml-[240px] z-20">
+<div class="flex items-center gap-4 h-full">
+<div class="font-display text-headline-sm text-on-surface md:hidden">Onyx</div>
+<div class="hidden md:flex items-center gap-6 h-full text-body-sm font-body-sm">
+<a class="text-on-surface-variant hover:text-on-surface transition-opacity h-full flex items-center" href="#">Overview</a>
+<a class="text-secondary font-bold border-b-2 border-secondary h-full flex items-center transition-all duration-200" href="#">Portfolio Monitoring</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-opacity h-full flex items-center" href="#">Risk Models</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="search">search</span>
+<input class="bg-primary-container border border-outline-variant text-on-surface font-mono-label text-mono-label rounded-md pl-9 pr-3 py-1.5 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary w-64 transition-all" placeholder="Search cmd+k..." type="text"/>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 flex gap-1">
+<span class="bg-surface-variant text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded font-mono-label border border-outline-variant">⌘</span>
+<span class="bg-surface-variant text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded font-mono-label border border-outline-variant">K</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface transition-opacity">
+<span class="material-symbols-outlined text-lg" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface transition-opacity">
+<span class="material-symbols-outlined text-lg" data-icon="settings">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface transition-opacity">
+<span class="material-symbols-outlined text-lg" data-icon="help">help</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="md:ml-[240px] mt-row-height-standard h-[calc(100vh-40px)] overflow-y-auto bg-background p-container-padding">
+<!-- Breadcrumbs & Global Context Rail -->
+<div class="mb-6 flex flex-col gap-4">
+<div class="flex items-center text-sm font-mono-label text-on-surface-variant gap-2">
+<a class="hover:text-on-surface transition-colors" href="#">Monitoring</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface">Portfolio View</span>
+</div>
+<!-- Global Context Rail -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
+<div>
+<div class="text-xs font-mono-label text-on-surface-variant mb-1 uppercase tracking-wider">Related Portfolio</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">Global Macro Strategy Fund</h2>
+</div>
+<div class="hidden md:block w-px h-10 bg-outline-variant"></div>
+<div class="flex gap-6">
+<div>
+<div class="text-xs font-mono-label text-on-surface-variant mb-1 uppercase tracking-wider">Stage</div>
+<div class="flex items-center gap-1.5 font-mono-label text-mono-label text-on-surface"><span class="w-2 h-2 rounded-full bg-secondary"></span> Live Monitoring</div>
+</div>
+<div>
+<div class="text-xs font-mono-label text-on-surface-variant mb-1 uppercase tracking-wider">Drift Alerts</div>
+<div class="flex items-center gap-1.5 font-mono-label text-mono-label text-[#F59E0B]"><span class="material-symbols-outlined text-[16px]">warning</span> 2 Active Alerts</div>
+</div>
+</div>
+</div>
+<div class="flex gap-2 w-full md:w-auto">
+<button class="flex-1 md:flex-none bg-surface-container-high border border-outline-variant text-on-surface font-mono-label text-mono-label px-4 py-2 rounded hover:bg-surface-variant transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span> Export Report
+                </button>
+<button class="flex-1 md:flex-none bg-secondary text-on-primary font-mono-label text-mono-label px-4 py-2 rounded hover:bg-secondary-fixed-dim transition-colors flex justify-center items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="sync">sync</span> Rebalance
+                </button>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-unit auto-rows-min">
+<!-- Performance Overview (Top Row) -->
+<div class="col-span-12 grid grid-cols-4 gap-unit mb-unit">
+<!-- KPI 1 -->
+<div class="bg-[#18181B] border border-[#27272A] p-4 rounded-lg flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-mono-label text-mono-label text-on-surface-variant uppercase">Total Portfolio Value</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="mt-4">
+<div class="font-display text-display text-on-surface">$14.2B</div>
+<div class="flex items-center gap-1 font-mono-label text-mono-label text-[#10B981] mt-1">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span> +1.2% (YTD)
+                        </div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-[#18181B] border border-[#27272A] p-4 rounded-lg flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-mono-label text-mono-label text-on-surface-variant uppercase">Today's PnL</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="payments">payments</span>
+</div>
+<div class="mt-4">
+<div class="font-display text-display text-[#10B981]">+$42.5M</div>
+<div class="flex items-center gap-1 font-mono-label text-mono-label text-on-surface-variant mt-1">
+                            Realized + Unrealized
+                        </div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-[#18181B] border border-[#27272A] p-4 rounded-lg flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-mono-label text-mono-label text-on-surface-variant uppercase">Beta-Adj Exposure</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="data_usage">data_usage</span>
+</div>
+<div class="mt-4">
+<div class="font-display text-display text-on-surface">1.14x</div>
+<div class="flex items-center gap-1 font-mono-label text-mono-label text-[#F59E0B] mt-1">
+                            Target: 1.00x
+                        </div>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-[#18181B] border border-[#27272A] p-4 rounded-lg flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-mono-label text-mono-label text-on-surface-variant uppercase">VaR (99% / 1D)</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="warning">warning</span>
+</div>
+<div class="mt-4">
+<div class="font-display text-display text-on-surface">$128M</div>
+<div class="flex items-center gap-1 font-mono-label text-mono-label text-[#EF4444] mt-1">
+<span class="material-symbols-outlined text-xs" data-icon="arrow_upward">arrow_upward</span> Breach Risk
+                        </div>
+</div>
+</div>
+</div>
+<!-- Main Chart Area -->
+<div class="col-span-12 lg:col-span-8 bg-[#18181B] border border-[#27272A] rounded-lg p-4 flex flex-col">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Performance vs. Benchmark</h3>
+<div class="flex bg-surface-container border border-outline-variant rounded p-0.5">
+<button class="px-2 py-1 text-mono-label font-mono-label text-on-surface-variant hover:text-on-surface rounded">1D</button>
+<button class="px-2 py-1 text-mono-label font-mono-label text-on-surface-variant hover:text-on-surface rounded">1W</button>
+<button class="px-2 py-1 text-mono-label font-mono-label text-on-surface-variant hover:text-on-surface rounded">1M</button>
+<button class="px-2 py-1 text-mono-label font-mono-label bg-surface-variant text-on-surface rounded">YTD</button>
+<button class="px-2 py-1 text-mono-label font-mono-label text-on-surface-variant hover:text-on-surface rounded">1Y</button>
+</div>
+</div>
+<div class="flex-grow w-full min-h-[300px] border border-[#27272A] border-dashed rounded relative flex items-center justify-center bg-surface-container-lowest">
+<!-- Placeholder for actual chart component -->
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: linear-gradient(#27272A 1px, transparent 1px), linear-gradient(90deg, #27272A 1px, transparent 1px); background-size: 20px 20px;"></div>
+<span class="font-mono-label text-mono-label text-on-surface-variant">Interactive Chart Canvas</span>
+</div>
+</div>
+<!-- Risk Alerts Sidebar -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-unit">
+<div class="bg-[#18181B] border border-[#27272A] rounded-lg p-4 flex-grow">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="smart_toy">smart_toy</span>
+                        AI Risk Alerts
+                    </h3>
+<div class="flex flex-col gap-3">
+<!-- Alert 1 -->
+<div class="border border-[#F59E0B]/30 bg-[#F59E0B]/5 rounded p-3">
+<div class="flex justify-between items-start mb-2">
+<span class="font-table-data text-table-data font-semibold text-[#F59E0B]">Concentration Warning</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant text-[10px]">2m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface mb-2">Tech sector allocation exceeds 35% policy limit. Recommend trimming MSFT &amp; AAPL positions.</p>
+<div class="flex justify-between items-center font-mono-label text-[10px] text-on-surface-variant mb-2">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">smart_toy</span> Agent: Onyx-Risk-Bot</span>
+<span class="bg-surface-variant px-1.5 py-0.5 rounded text-on-surface">Confidence: 94%</span>
+</div>
+<div class="border-t border-[#F59E0B]/20 pt-2">
+<button class="flex items-center gap-1 text-[11px] text-[#F59E0B] hover:text-[#F59E0B]/80 font-mono-label transition-colors">
+<span class="material-symbols-outlined text-[14px]">psychology</span> View Reasoning <span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Alert 2 -->
+<div class="border border-[#EF4444]/30 bg-[#EF4444]/5 rounded p-3">
+<div class="flex justify-between items-start mb-2">
+<span class="font-table-data text-table-data font-semibold text-[#EF4444]">Macro Volatility Hedge Suggested</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant text-[10px]">15m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface mb-2">Elevated VIX reading detected. Consider initiating SPX puts for tail risk protection.</p>
+<div class="flex justify-between items-center font-mono-label text-[10px] text-on-surface-variant mb-2">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">smart_toy</span> Agent: Onyx-Risk-Bot</span>
+<span class="bg-surface-variant px-1.5 py-0.5 rounded text-on-surface">Confidence: 88%</span>
+</div>
+<div class="border-t border-[#EF4444]/20 pt-2">
+<button class="flex items-center gap-1 text-[11px] text-[#EF4444] hover:text-[#EF4444]/80 font-mono-label transition-colors">
+<span class="material-symbols-outlined text-[14px]">psychology</span> View Reasoning <span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Alert 3 -->
+<div class="border border-[#3B82F6]/30 bg-[#3B82F6]/5 rounded p-3">
+<div class="flex justify-between items-start mb-2">
+<span class="font-table-data text-table-data font-semibold text-[#3B82F6]">Liquidity Delta Alert</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant text-[10px]">1h ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface mb-2">Average daily volume decreasing across small-cap bucket. Adjust slippage models.</p>
+<div class="flex justify-between items-center font-mono-label text-[10px] text-on-surface-variant mb-2">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">smart_toy</span> Agent: Onyx-Risk-Bot</span>
+<span class="bg-surface-variant px-1.5 py-0.5 rounded text-on-surface">Confidence: 91%</span>
+</div>
+<div class="border-t border-[#3B82F6]/20 pt-2">
+<button class="flex items-center gap-1 text-[11px] text-[#3B82F6] hover:text-[#3B82F6]/80 font-mono-label transition-colors">
+<span class="material-symbols-outlined text-[14px]">psychology</span> View Reasoning <span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Holdings Table -->
+<div class="col-span-12 bg-[#18181B] border border-outline-variant rounded-lg flex flex-col overflow-hidden shadow-sm">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Live Holdings &amp; Drift</h3>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="filter_list">filter_list</span>
+<input class="bg-surface-container-highest border border-outline-variant text-on-surface font-mono-label text-mono-label rounded pl-8 pr-2 py-1 focus:outline-none focus:border-secondary w-48 h-8 text-xs placeholder:text-on-surface-variant/70" placeholder="Filter ticker..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-low font-mono-label text-mono-label text-on-surface-variant h-10">
+<th class="px-4 py-2 font-medium tracking-wider uppercase text-[11px]">Ticker</th>
+<th class="px-4 py-2 font-medium tracking-wider uppercase text-[11px]">Name</th>
+<th class="px-4 py-2 font-medium tracking-wider uppercase text-[11px] text-right">Weight</th>
+<th class="px-4 py-2 font-medium tracking-wider uppercase text-[11px] text-right">Target</th>
+<th class="px-4 py-2 font-medium tracking-wider uppercase text-[11px] text-right">Drift</th>
+<th class="px-4 py-2 font-medium tracking-wider uppercase text-[11px] text-right">Market Value</th>
+<th class="px-4 py-2 font-medium tracking-wider uppercase text-[11px] text-right">24h Chg</th>
+<th class="px-4 py-2 font-medium tracking-wider uppercase text-[11px] text-right">PnL</th>
+<th class="px-4 py-2 font-medium tracking-wider uppercase text-[11px] text-center">Status</th>
+</tr>
+</thead>
+<tbody class="font-table-data text-table-data text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant hover:bg-surface-variant/40 transition-colors h-12 group bg-surface">
+<td class="px-4 py-2 font-mono-label text-secondary font-semibold">AAPL</td>
+<td class="px-4 py-2 text-on-surface font-medium">Apple Inc.</td>
+<td class="px-4 py-2 text-right font-mono-label text-sm text-on-surface">7.2%</td>
+<td class="px-4 py-2 text-right font-mono-label text-on-surface-variant">6.5%</td>
+<td class="px-4 py-2 text-right font-mono-label text-[#F59E0B] font-medium">+0.7%</td>
+<td class="px-4 py-2 text-right font-mono-label text-on-surface">$1.02B</td>
+<td class="px-4 py-2 text-right text-[#10B981] font-mono-label">+1.2%</td>
+<td class="px-4 py-2 text-right text-[#10B981] font-mono-label">+$12.2M</td>
+<td class="px-4 py-2 text-center">
+<span class="inline-flex items-center px-2 py-1 rounded bg-[#F59E0B] text-[#18181B] font-mono-label text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                                    Warning
+                                </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant hover:bg-surface-variant/40 transition-colors h-12 bg-surface">
+<td class="px-4 py-2 font-mono-label text-secondary font-semibold">MSFT</td>
+<td class="px-4 py-2 text-on-surface font-medium">Microsoft Corp.</td>
+<td class="px-4 py-2 text-right font-mono-label text-sm text-on-surface">6.8%</td>
+<td class="px-4 py-2 text-right font-mono-label text-on-surface-variant">6.5%</td>
+<td class="px-4 py-2 text-right font-mono-label text-on-surface-variant">+0.3%</td>
+<td class="px-4 py-2 text-right font-mono-label text-on-surface">$965M</td>
+<td class="px-4 py-2 text-right text-[#EF4444] font-mono-label">-0.4%</td>
+<td class="px-4 py-2 text-right text-[#EF4444] font-mono-label">-$3.8M</td>
+<td class="px-4 py-2 text-center">
+<span class="inline-flex items-center px-2 py-1 rounded bg-[#10B981]/20 text-[#10B981] border border-[#10B981]/40 font-mono-label text-[10px] font-bold uppercase tracking-wider">
+                                    In Tol
+                                </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-outline-variant hover:bg-surface-variant/40 transition-colors h-12 bg-surface">
+<td class="px-4 py-2 font-mono-label text-secondary font-semibold">NVDA</td>
+<td class="px-4 py-2 text-on-surface font-medium">NVIDIA Corp.</td>
+<td class="px-4 py-2 text-right font-mono-label text-sm text-on-surface">5.1%</td>
+<td class="px-4 py-2 text-right font-mono-label text-on-surface-variant">3.5%</td>
+<td class="px-4 py-2 text-right font-mono-label text-[#EF4444] font-medium">+1.6%</td>
+<td class="px-4 py-2 text-right font-mono-label text-on-surface">$724M</td>
+<td class="px-4 py-2 text-right text-[#10B981] font-mono-label">+3.4%</td>
+<td class="px-4 py-2 text-right text-[#10B981] font-mono-label">+$24.6M</td>
+<td class="px-4 py-2 text-center">
+<span class="inline-flex items-center px-2 py-1 rounded bg-[#EF4444] text-white font-mono-label text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                                    Rebalance
+                                </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="border-b border-outline-variant hover:bg-surface-variant/40 transition-colors h-12 bg-surface">
+<td class="px-4 py-2 font-mono-label text-secondary font-semibold">JPM</td>
+<td class="px-4 py-2 text-on-surface font-medium">JPMorgan Chase</td>
+<td class="px-4 py-2 text-right font-mono-label text-sm text-on-surface">3.2%</td>
+<td class="px-4 py-2 text-right font-mono-label text-on-surface-variant">3.5%</td>
+<td class="px-4 py-2 text-right font-mono-label text-on-surface-variant">-0.3%</td>
+<td class="px-4 py-2 text-right font-mono-label text-on-surface">$454M</td>
+<td class="px-4 py-2 text-right text-on-surface-variant font-mono-label">0.0%</td>
+<td class="px-4 py-2 text-right text-on-surface-variant font-mono-label">$0</td>
+<td class="px-4 py-2 text-center">
+<span class="inline-flex items-center px-2 py-1 rounded bg-[#10B981]/20 text-[#10B981] border border-[#10B981]/40 font-mono-label text-[10px] font-bold uppercase tracking-wider">
+                                    In Tol
+                                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Activity & News Feed -->
+<div class="col-span-12 grid grid-cols-2 gap-unit mt-unit">
+<div class="bg-[#18181B] border border-[#27272A] rounded-lg p-4 h-64 overflow-y-auto">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4 sticky top-0 bg-[#18181B] py-1 border-b border-[#27272A]">Activity Log</h3>
+<ul class="flex flex-col gap-3 font-table-data text-table-data">
+<li class="flex gap-3 items-start">
+<span class="w-2 h-2 rounded-full bg-secondary mt-1.5 shrink-0"></span>
+<div>
+<p class="text-on-surface">Auto-Rebalance Executed: Traded 50,000 shares of NVDA.</p>
+<span class="font-mono-label text-[10px] text-on-surface-variant">10:42 AM • Algorithm: VWAP</span>
+</div>
+</li>
+<li class="flex gap-3 items-start">
+<span class="w-2 h-2 rounded-full border border-outline-variant mt-1.5 shrink-0"></span>
+<div>
+<p class="text-on-surface-variant">Dividend Accrual: JPM ex-dividend date confirmed.</p>
+<span class="font-mono-label text-[10px] text-on-surface-variant">09:15 AM • Corporate Action</span>
+</div>
+</li>
+</ul>
+</div>
+<div class="bg-[#18181B] border border-[#27272A] rounded-lg p-4 h-64 overflow-y-auto">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4 sticky top-0 bg-[#18181B] py-1 border-b border-[#27272A]">Portfolio News</h3>
+<ul class="flex flex-col gap-3 font-table-data text-table-data">
+<li class="border-b border-[#27272A] pb-2">
+<p class="text-on-surface font-medium hover:text-secondary cursor-pointer transition-colors">Tech stocks rally on unexpected earnings beats.</p>
+<span class="font-mono-label text-[10px] text-on-surface-variant">Reuters • Impacts: AAPL, MSFT, NVDA</span>
+</li>
+<li class="border-b border-[#27272A] pb-2">
+<p class="text-on-surface font-medium hover:text-secondary cursor-pointer transition-colors">Federal Reserve signals pause in rate hikes.</p>
+<span class="font-mono-label text-[10px] text-on-surface-variant">Bloomberg • Macro Impact</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+</body></html>

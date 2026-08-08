@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onyx Knowledge Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#e3e1ec",
+                        "surface-container-high": "#292931",
+                        "surface-container-low": "#1a1b22",
+                        "surface-bright": "#383941",
+                        "inverse-on-surface": "#2f3038",
+                        "surface": "#12131a",
+                        "inverse-surface": "#e3e1ec",
+                        "surface-dim": "#12131a",
+                        "surface-container-lowest": "#0d0e15",
+                        "on-surface-variant": "#c8c5ca",
+                        "on-secondary": "#002e6a",
+                        "secondary-container": "#0566d9",
+                        "error": "#ffb4ab",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-error": "#690005",
+                        "tertiary-container": "#0c0808",
+                        "on-tertiary": "#352f2f",
+                        "inverse-primary": "#5f5e60",
+                        "outline-variant": "#47464a",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-secondary-container": "#e6ecff",
+                        "tertiary-fixed": "#ebe0df",
+                        "on-primary-fixed": "#1c1b1d",
+                        "on-tertiary-fixed-variant": "#4c4545",
+                        "on-surface": "#e3e1ec",
+                        "surface-variant": "#33343c",
+                        "on-primary-fixed-variant": "#474649",
+                        "surface-container": "#1e1f26",
+                        "outline": "#919095",
+                        "tertiary-fixed-dim": "#cec4c4",
+                        "background": "#12131a",
+                        "tertiary": "#cec4c4",
+                        "surface-tint": "#c8c6c8",
+                        "on-primary": "#313032",
+                        "primary-fixed": "#e5e1e4",
+                        "on-tertiary-fixed": "#1f1a1a",
+                        "secondary": "#adc6ff",
+                        "primary": "#c8c6c8",
+                        "primary-container": "#09090b",
+                        "on-secondary-fixed": "#001a42",
+                        "on-primary-container": "#7a787b",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "surface-container-highest": "#33343c",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-tertiary-container": "#7f7777",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "row-height-dense": "32px",
+                        "component-gap-md": "8px",
+                        "component-gap-sm": "4px",
+                        "row-height-standard": "40px",
+                        "container-padding": "24px",
+                        "unit": "8px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "mono-label": ["Geist"],
+                        "headline-sm": ["Inter"],
+                        "table-data": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "mono-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "table-data": ["13px", { "lineHeight": "16px", "fontWeight": "450" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased overflow-hidden">
+<nav class="w-[240px] h-screen fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant flex flex-col justify-between py-6 z-50">
+<div>
+<div class="px-6 mb-8 flex flex-col gap-1">
+<span class="font-display text-display font-semibold text-on-surface tracking-tight">Onyx</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-widest">Institutional Grade</span>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<a class="flex items-center gap-3 px-6 py-2.5 font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_tree">account_tree</span>
+                    Workflows
+                </a>
+<a class="flex items-center gap-3 px-6 py-2.5 font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="psychology">psychology</span>
+                    Intelligence
+                </a>
+<a class="flex items-center gap-3 px-6 py-2.5 font-body-md text-body-md text-secondary font-bold border-l-2 border-secondary bg-surface-container-low cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="travel_explore" style="font-variation-settings: 'FILL' 1;">travel_explore</span>
+                    Research
+                </a>
+<a class="flex items-center gap-3 px-6 py-2.5 font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="insights">insights</span>
+                    Strategy
+                </a>
+<a class="flex items-center gap-3 px-6 py-2.5 font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="fact_check">fact_check</span>
+                    Approvals
+                </a>
+<a class="flex items-center gap-3 px-6 py-2.5 font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="play_circle">play_circle</span>
+                    Execution
+                </a>
+<a class="flex items-center gap-3 px-6 py-2.5 font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="monitor_heart">monitor_heart</span>
+                    Monitoring
+                </a>
+</div>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<a class="flex items-center gap-3 px-6 py-2 font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="smart_toy">smart_toy</span>
+                Agents
+            </a>
+<a class="flex items-center gap-3 px-6 py-2 font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="description">description</span>
+                Reports
+            </a>
+<a class="flex items-center gap-3 px-6 py-2 font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="history">history</span>
+                Audit
+            </a>
+<a class="flex items-center gap-3 px-6 py-2 font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
+                Settings
+            </a>
+</div>
+</nav>
+<header class="h-row-height-standard w-[calc(100%-240px)] fixed top-0 right-0 bg-surface border-b border-outline-variant flex justify-between items-center px-gutter ml-[240px] z-40">
+<div class="flex items-center gap-4 flex-1">
+<div class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span class="hover:text-primary transition-colors cursor-pointer">Research</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface">Knowledge Center</span>
+</div>
+<div class="flex-1 max-w-lg ml-8 relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[16px] group-focus-within:text-secondary">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded h-7 pl-9 pr-3 font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-secondary transition-colors" placeholder="Search Companies, Reports, Portfolios..." type="text"/>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+<span class="font-mono-label text-mono-label text-on-surface-variant px-1 border border-outline-variant rounded opacity-70">⌘</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant px-1 border border-outline-variant rounded opacity-70">K</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-all duration-200">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+</button>
+<div class="w-6 h-6 rounded-full border border-outline-variant overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="A macro photograph of an abstract metallic surface with subtle brushed textures, illuminated by cool, high-contrast studio lighting to create a modern, anonymous avatar placeholder suitable for a high-end corporate dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClRwVZ7JuksKQZ4SYyFus9IcMKSQ7sGPVSRUgT98_zGKredvd4WTldLOT5oYAbQskon2vBPscVs_3FXCj_bKO8L0gEydYH9K9FP-62emrmyIxr1TIepwM2_7m96KiS5nU3LvXVoU_08VzVSIur3WZuhXBsutLOp3WQiuog6EdpZVEfVEjyQf5OLFDQyWo9q7ras_8UagtslNJ3DrY-tIRQ7WntX7XfXJS4YUukKlEMg3JTZTFHKFya"/>
+</div>
+</div>
+</header>
+<main class="ml-[240px] mt-[40px] w-[calc(100%-240px)] h-[calc(100vh-40px)] flex bg-surface-container-lowest">
+<div class="flex-1 flex flex-col overflow-y-auto hide-scrollbar p-6 gap-8">
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface mb-1">Knowledge Center</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Enterprise knowledge management and institutional documentation.</p>
+</div>
+<button class="h-8 px-4 bg-secondary-container text-on-secondary-container rounded font-mono-label text-mono-label hover:brightness-110 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                    New Document
+                </button>
+</div>
+<section>
+<h2 class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider mb-4 border-b border-outline-variant pb-2">Collections</h2>
+<div class="grid grid-cols-5 gap-3">
+<div class="bg-surface-container-low border border-outline-variant rounded p-3 cursor-pointer hover:border-outline transition-colors group">
+<span class="material-symbols-outlined text-secondary mb-2 group-hover:scale-110 transition-transform">gavel</span>
+<h3 class="font-body-sm text-body-sm font-semibold text-on-surface mb-0.5">Investment Policies</h3>
+<p class="font-table-data text-table-data text-on-surface-variant">142 Documents</p>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded p-3 cursor-pointer hover:border-outline transition-colors group">
+<span class="material-symbols-outlined text-secondary mb-2 group-hover:scale-110 transition-transform">analytics</span>
+<h3 class="font-body-sm text-body-sm font-semibold text-on-surface mb-0.5">Research Templates</h3>
+<p class="font-table-data text-table-data text-on-surface-variant">89 Documents</p>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded p-3 cursor-pointer hover:border-outline transition-colors group">
+<span class="material-symbols-outlined text-secondary mb-2 group-hover:scale-110 transition-transform">verified_user</span>
+<h3 class="font-body-sm text-body-sm font-semibold text-on-surface mb-0.5">Compliance</h3>
+<p class="font-table-data text-table-data text-on-surface-variant">215 Documents</p>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded p-3 cursor-pointer hover:border-outline transition-colors group">
+<span class="material-symbols-outlined text-secondary mb-2 group-hover:scale-110 transition-transform">schema</span>
+<h3 class="font-body-sm text-body-sm font-semibold text-on-surface mb-0.5">Methodologies</h3>
+<p class="font-table-data text-table-data text-on-surface-variant">56 Documents</p>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded p-3 cursor-pointer hover:border-outline transition-colors group">
+<span class="material-symbols-outlined text-secondary mb-2 group-hover:scale-110 transition-transform">menu_book</span>
+<h3 class="font-body-sm text-body-sm font-semibold text-on-surface mb-0.5">Internal Wiki</h3>
+<p class="font-table-data text-table-data text-on-surface-variant">403 Documents</p>
+</div>
+</div>
+</section>
+<section>
+<div class="flex justify-between items-center mb-4 border-b border-outline-variant pb-2">
+<h2 class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider">Repository</h2>
+<div class="flex gap-2">
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded border border-transparent hover:border-outline-variant transition-colors"><span class="material-symbols-outlined text-[16px]">filter_list</span></button>
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded border border-transparent hover:border-outline-variant transition-colors"><span class="material-symbols-outlined text-[16px]">sort</span></button>
+</div>
+</div>
+<div class="w-full bg-surface border border-outline-variant rounded overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high border-b border-outline-variant h-8">
+<th class="px-4 font-mono-label text-mono-label text-on-surface-variant font-normal w-2/5">Document Title</th>
+<th class="px-4 font-mono-label text-mono-label text-on-surface-variant font-normal">Category</th>
+<th class="px-4 font-mono-label text-mono-label text-on-surface-variant font-normal">Last Updated</th>
+<th class="px-4 font-mono-label text-mono-label text-on-surface-variant font-normal">Version</th>
+<th class="px-4 font-mono-label text-mono-label text-on-surface-variant font-normal text-right">Author / System</th>
+</tr>
+</thead>
+<tbody class="font-table-data text-table-data text-on-surface-variant">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer h-row-height-dense">
+<td class="px-4 text-on-surface flex items-center gap-3 h-full">
+<span class="material-symbols-outlined text-[16px] text-secondary">description</span>
+                                    Investment Policy Q4 2024
+                                </td>
+<td class="px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-surface-variant text-on-surface-variant font-mono-label text-[10px] uppercase">
+                                        Policies
+                                    </span>
+</td>
+<td class="px-4">Oct 24, 09:12 AM</td>
+<td class="px-4"><span class="font-mono-label">v4.1.0</span></td>
+<td class="px-4 text-right">
+<div class="flex flex-col items-end justify-center h-full">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[14px] text-secondary">smart_toy</span>
+<span class="font-medium text-xs">Onyx Agent</span>
+</div>
+<span class="text-[10px] text-on-surface-variant">Gen: Oct 24, 09:10 AM</span>
+</div>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer h-row-height-dense">
+<td class="px-4 text-on-surface flex items-center gap-3 h-full">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">article</span>
+                                    Macro Research Template - EMEA
+                                </td>
+<td class="px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-surface-variant text-on-surface-variant font-mono-label text-[10px] uppercase">
+                                        Templates
+                                    </span>
+</td>
+<td class="px-4">Oct 23, 14:45 PM</td>
+<td class="px-4"><span class="font-mono-label">v2.0.1</span></td>
+<td class="px-4 text-right h-full align-middle">S. Reynolds</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer h-row-height-dense">
+<td class="px-4 text-on-surface flex items-center gap-3 h-full">
+<span class="material-symbols-outlined text-[16px] text-error">gavel</span>
+                                    Compliance Playbook (Draft)
+                                </td>
+<td class="px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-surface-variant text-on-surface-variant font-mono-label text-[10px] uppercase">
+                                        Compliance
+                                    </span>
+</td>
+<td class="px-4">Oct 21, 11:30 AM</td>
+<td class="px-4"><span class="font-mono-label text-error">v1.0.0-draft</span></td>
+<td class="px-4 text-right">
+<div class="flex flex-col items-end justify-center h-full">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[14px] text-secondary">smart_toy</span>
+<span class="font-medium text-xs">Onyx Agent</span>
+</div>
+<span class="text-[10px] text-on-surface-variant">Gen: Oct 21, 11:28 AM</span>
+</div>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer h-row-height-dense">
+<td class="px-4 text-on-surface flex items-center gap-3 h-full">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">table_chart</span>
+                                    Yield Curve Analysis Methodology
+                                </td>
+<td class="px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-surface-variant text-on-surface-variant font-mono-label text-[10px] uppercase">
+                                        Methodology
+                                    </span>
+</td>
+<td class="px-4">Oct 15, 08:00 AM</td>
+<td class="px-4"><span class="font-mono-label">v3.5.2</span></td>
+<td class="px-4 text-right h-full align-middle">M. Chen</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer h-row-height-dense">
+<td class="px-4 text-on-surface flex items-center gap-3 h-full">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">folder_shared</span>
+                                    Onboarding Materials 2024
+                                </td>
+<td class="px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-surface-variant text-on-surface-variant font-mono-label text-[10px] uppercase">
+                                        Internal
+                                    </span>
+</td>
+<td class="px-4">Sep 01, 09:15 AM</td>
+<td class="px-4"><span class="font-mono-label">v1.1.0</span></td>
+<td class="px-4 text-right h-full align-middle">HR Ops</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<aside class="w-[320px] bg-surface-container-low border-l border-outline-variant p-6 flex flex-col gap-8 overflow-y-auto hide-scrollbar">
+<section>
+<h3 class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider mb-2">Stage</h3>
+<div class="px-3 py-2 bg-surface border border-outline-variant rounded flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px]">database</span>
+<div>
+<div class="font-body-sm font-semibold text-on-surface">Research Repository</div>
+<div class="font-table-data text-[11px] text-on-surface-variant">Global Knowledge Base</div>
+</div>
+</div>
+</section>
+<section>
+<h3 class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider mb-3">Quick Actions</h3>
+<div class="flex flex-col gap-2">
+<button class="flex items-center gap-3 px-3 py-2 w-full text-left rounded bg-surface hover:bg-surface-variant border border-outline-variant transition-colors group">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-on-surface">upload_file</span>
+<span class="font-body-sm text-on-surface">Upload PDF</span>
+</button>
+<button class="flex items-center gap-3 px-3 py-2 w-full text-left rounded bg-surface hover:bg-surface-variant border border-outline-variant transition-colors group">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-on-surface">note_add</span>
+<span class="font-body-sm text-on-surface">New Template</span>
+</button>
+</div>
+</section>
+<section>
+<h3 class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">star</span>
+                    Starred Documents
+                </h3>
+<div class="flex flex-col gap-2">
+<a class="flex items-center justify-between p-2 rounded hover:bg-surface transition-colors group" href="#">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-[14px] text-secondary">description</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">Q3 Strategy Review</span>
+</div>
+</a>
+<a class="flex items-center justify-between p-2 rounded hover:bg-surface transition-colors group" href="#">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">article</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">API Documentation v2</span>
+</div>
+</a>
+<a class="flex items-center justify-between p-2 rounded hover:bg-surface transition-colors group" href="#">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">gavel</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">Risk Tolerance Framework</span>
+</div>
+</a>
+</div>
+</section>
+<section>
+<h3 class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">history</span>
+                    Recent Activity
+                </h3>
+<div class="flex flex-col gap-3 relative border-l border-outline-variant ml-2 pl-4">
+<div class="relative">
+<div class="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-outline-variant border-2 border-surface-container-low"></div>
+<p class="font-body-sm text-body-sm text-on-surface mb-0.5">Macro Research Template</p>
+<p class="font-table-data text-table-data text-on-surface-variant">2 hours ago</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-outline-variant border-2 border-surface-container-low"></div>
+<p class="font-body-sm text-body-sm text-on-surface mb-0.5">Yield Curve Analysis...</p>
+<p class="font-table-data text-table-data text-on-surface-variant">Yesterday</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-outline-variant border-2 border-surface-container-low"></div>
+<p class="font-body-sm text-body-sm text-on-surface mb-0.5">Investment Policy Q4</p>
+<p class="font-table-data text-table-data text-on-surface-variant">Oct 24</p>
+</div>
+</div>
+</section>
+</aside>
+</main>
+</body></html>

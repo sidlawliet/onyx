@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onyx Access Control Panel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#0566d9",
+                      "on-background": "#e3e1ec",
+                      "on-tertiary-fixed": "#1f1a1a",
+                      "on-secondary": "#002e6a",
+                      "surface-tint": "#c8c6c8",
+                      "surface-container": "#1e1f26",
+                      "background": "#12131a",
+                      "tertiary-fixed-dim": "#cec4c4",
+                      "on-primary-fixed": "#1c1b1d",
+                      "on-primary-fixed-variant": "#474649",
+                      "inverse-surface": "#e3e1ec",
+                      "on-tertiary-container": "#7f7777",
+                      "on-error-container": "#ffdad6",
+                      "outline": "#919095",
+                      "primary": "#c8c6c8",
+                      "on-surface": "#e3e1ec",
+                      "on-secondary-fixed-variant": "#004395",
+                      "tertiary-fixed": "#ebe0df",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#adc6ff",
+                      "on-error": "#690005",
+                      "secondary": "#adc6ff",
+                      "primary-fixed": "#e5e1e4",
+                      "surface": "#12131a",
+                      "secondary-fixed": "#d8e2ff",
+                      "on-secondary-container": "#e6ecff",
+                      "surface-variant": "#33343c",
+                      "inverse-on-surface": "#2f3038",
+                      "error-container": "#93000a",
+                      "inverse-primary": "#5f5e60",
+                      "primary-fixed-dim": "#c8c6c8",
+                      "surface-container-lowest": "#0d0e15",
+                      "on-primary-container": "#7a787b",
+                      "primary-container": "#09090b",
+                      "on-tertiary": "#352f2f",
+                      "on-tertiary-fixed-variant": "#4c4545",
+                      "surface-container-high": "#292931",
+                      "on-secondary-fixed": "#001a42",
+                      "surface-dim": "#12131a",
+                      "on-surface-variant": "#c8c5ca",
+                      "outline-variant": "#47464a",
+                      "tertiary-container": "#0c0808",
+                      "on-primary": "#313032",
+                      "tertiary": "#cec4c4",
+                      "surface-container-highest": "#33343c",
+                      "surface-bright": "#383941",
+                      "surface-container-low": "#1a1b22"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "row-height-standard": "40px",
+                      "component-gap-sm": "4px",
+                      "component-gap-md": "8px",
+                      "unit": "8px",
+                      "container-padding": "24px",
+                      "row-height-dense": "32px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "table-data": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "mono-label": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "table-data": [
+                              "13px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "450"
+                              }
+                      ],
+                      "display": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "mono-label": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-primary-container text-on-surface font-body-sm text-body-sm h-screen overflow-hidden selection:bg-secondary-container/30 flex">
+<!-- Global Context Rail -->
+<aside class="w-16 h-screen bg-surface-container-lowest border-r border-outline-variant flex flex-col items-center py-4 z-30 flex-shrink-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center shrink-0 mb-6 cursor-pointer hover:bg-surface-variant transition-colors" title="Onyx Platform">
+<span class="material-symbols-outlined text-secondary text-[24px]" data-weight="fill">token</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-4 w-full px-2">
+<div class="w-full flex justify-center py-2 relative group cursor-pointer" title="Stage: Identity &amp; Governance">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-on-surface transition-colors">admin_panel_settings</span>
+<div class="absolute inset-y-0 left-0 w-0.5 bg-secondary rounded-r"></div>
+</div>
+<div class="w-8 h-px bg-outline-variant/50 my-2"></div>
+<div class="w-full flex justify-center py-2 relative group cursor-pointer" title="Active Users: 142">
+<div class="relative">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-on-surface transition-colors">group</span>
+</div>
+</div>
+<div class="w-full flex justify-center py-2 relative group cursor-pointer" title="Pending MFA: 12">
+<div class="relative">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-on-surface transition-colors">security</span>
+<div class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-amber-500 rounded-full flex items-center justify-center text-[9px] font-bold text-white">12</div>
+</div>
+</div>
+<div class="w-8 h-px bg-outline-variant/50 my-2"></div>
+<div class="w-full flex justify-center py-2 relative group cursor-pointer" title="Provision User">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-on-surface transition-colors">person_add</span>
+</div>
+<div class="w-full flex justify-center py-2 relative group cursor-pointer" title="Audit Access">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-on-surface transition-colors">policy</span>
+</div>
+</div>
+<div class="mt-auto flex flex-col items-center gap-4 w-full px-2 pt-4 border-t border-outline-variant/30">
+<img alt="User profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover cursor-pointer hover:ring-2 hover:ring-secondary/50 transition-all" data-alt="A small, professional corporate headshot of a person looking forward, neutral expression, high-contrast dark mode aesthetic, dark background. Minimalist styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1zT781uBXNOe4KMv2q3wDF9iKFg8g_7OqtHdJuKTDJozcglhqOnk-zh5gSIjLi79yq9YCqwE1BWOSx7zM1owwdzkYPNLnq84lTiNQ9HZPY9HneMma3na-t34o8QOHLP2qtK4a0UtRQ-rXf3G7Hr_IvrDG9p9nWBWxC4-wUpsXNkQhaGAmkWmewq0CntlRsoEFWpexDatnP3Iha4Wwtxf5hrEmlvPtxCBRy0MCGLlJIQvP6gZx-Mcp"/>
+</div>
+</aside>
+<div class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar -->
+<nav class="w-full h-row-height-standard bg-surface-dim border-b border-outline-variant flex items-center justify-between px-gutter z-10 shrink-0">
+<div class="flex items-center gap-component-gap-md">
+<!-- Breadcrumbs -->
+<div class="flex items-center text-xs text-on-surface-variant gap-1.5 font-medium">
+<span class="hover:text-on-surface cursor-pointer transition-colors">Settings</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface">Access Management</span>
+</div>
+</div>
+<div class="flex items-center gap-container-padding">
+<!-- Search Bar -->
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[16px]">search</span>
+<input class="w-full bg-surface-container-lowest text-on-surface border border-outline-variant rounded-lg py-1.5 pl-8 pr-12 text-xs focus:border-[#3B82F6] focus:ring-0 placeholder:text-on-surface-variant/50 transition-colors" placeholder="Search users, roles... (Cmd+K)" type="text"/>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-0.5">
+<kbd class="font-mono-label text-[10px] text-on-surface-variant px-1 rounded bg-surface border border-outline-variant/50">⌘</kbd>
+<kbd class="font-mono-label text-[10px] text-on-surface-variant px-1 rounded bg-surface border border-outline-variant/50">K</kbd>
+</div>
+</div>
+<!-- Trailing Icons -->
+<div class="flex items-center gap-component-gap-md text-on-surface-variant">
+<button class="hover:bg-surface-container-highest transition-colors rounded-DEFAULT p-1.5 cursor-pointer"><span class="material-symbols-outlined text-[18px]">notifications</span></button>
+<button class="hover:bg-surface-container-highest transition-colors rounded-DEFAULT p-1.5 cursor-pointer"><span class="material-symbols-outlined text-[18px]">help_outline</span></button>
+</div>
+</div>
+</nav>
+<!-- Main Workspace -->
+<main class="flex-1 flex bg-[#09090B] overflow-hidden">
+<!-- Left Column: Data Table -->
+<div class="flex-1 flex flex-col border-r border-[#27272A] min-w-[600px]">
+<!-- Header & Filters -->
+<div class="p-container-padding pb-4 border-b border-[#27272A] bg-[#18181B]">
+<div class="flex items-center justify-between mb-4">
+<h1 class="font-headline-sm text-headline-sm text-on-surface">User Directory</h1>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 border border-[#3F3F46] rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors flex items-center gap-2 text-xs">
+<span class="material-symbols-outlined text-[14px]">download</span> Export
+                        </button>
+<button class="px-3 py-1.5 bg-[#3B82F6] text-white rounded-DEFAULT hover:bg-[#2563EB] transition-colors flex items-center gap-2 text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]">person_add</span> Provision User
+                        </button>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<!-- Filters -->
+<div class="relative w-48">
+<select class="w-full bg-[#09090B] text-on-surface border border-[#27272A] rounded-DEFAULT py-1.5 pl-3 pr-8 text-xs appearance-none focus:border-[#3B82F6] focus:ring-0 cursor-pointer">
+<option>All Roles</option>
+<option>Super Admin</option>
+<option>Portfolio Manager</option>
+<option>Analyst</option>
+<option>Auditor</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-[14px] pointer-events-none">expand_more</span>
+</div>
+<div class="relative w-40">
+<select class="w-full bg-[#09090B] text-on-surface border border-[#27272A] rounded-DEFAULT py-1.5 pl-3 pr-8 text-xs appearance-none focus:border-[#3B82F6] focus:ring-0 cursor-pointer">
+<option>All Statuses</option>
+<option>Active</option>
+<option>MFA Pending</option>
+<option>Suspended</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-[14px] pointer-events-none">expand_more</span>
+</div>
+<div class="ml-auto flex items-center gap-2 text-on-surface-variant text-xs">
+<span class="font-mono-label">Density:</span>
+<button class="p-1 border border-transparent rounded-DEFAULT hover:bg-surface-variant transition-colors"><span class="material-symbols-outlined text-[14px]">view_headline</span></button>
+<button class="p-1 border border-[#3F3F46] rounded-DEFAULT bg-surface-variant text-on-surface hover:bg-[#3F3F46] transition-colors"><span class="material-symbols-outlined text-[14px]">table_rows</span></button>
+</div>
+</div>
+</div>
+<!-- Table Container -->
+<div class="flex-1 overflow-auto bg-[#09090B]">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-[#18181B] border-b border-[#27272A] z-10 text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">
+<tr>
+<th class="px-4 py-3 font-medium">User</th>
+<th class="px-4 py-3 font-medium">Role</th>
+<th class="px-4 py-3 font-medium">Status</th>
+<th class="px-4 py-3 font-medium">MFA</th>
+<th class="px-4 py-3 font-medium">Last Active</th>
+<th class="px-4 py-3 w-10"></th>
+</tr>
+</thead>
+<tbody class="font-table-data text-table-data divide-y divide-[#27272A]">
+<!-- Row 1: Selected State -->
+<tr class="hover:bg-[#18181B] transition-colors cursor-pointer border-l-2 border-l-[#3B82F6] bg-[#18181B]/50">
+<td class="px-4 py-3">
+<div class="flex items-center gap-3">
+<img alt="Sarah Chen" class="w-7 h-7 rounded-full object-cover border border-[#3F3F46]" data-alt="A professional headshot of a woman, Sarah Chen, dark background, corporate lighting, minimal style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDLwUqyh2Y_SDwjLfYATpQCp68CGz_4FHGNzmUmY--kdhqROgyy703y8Kof4XMG5_CPDgPmuGIXIr4gxnTt_ApPzUwkIibuD4bM-_3b2GIfbvuK6CyKHW_Nr-P9qbi3bTLw1d1Ekoe5bXCUrsEPYx4D85BgJfQx3pm6-dN_RdwPEAheV1TFytuywFdOhdshcuCvAqhsAH5sOZGDY7GioS8MQ_hCTk-5ilDRuq7AqqPMPgu9Qnj09Z_"/>
+<div class="flex flex-col">
+<span class="text-on-surface font-medium text-sm">Sarah Chen</span>
+<span class="text-on-surface-variant text-xs">schen@onyx.inc</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-3">
+<span class="px-2 py-0.5 rounded-[4px] bg-secondary-container/20 text-secondary border border-secondary/30 text-[11px] font-mono-label inline-flex items-center h-6">Portfolio Mgr</span>
+</td>
+<td class="px-4 py-3">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 text-xs font-medium">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+<span>Active</span>
+</div>
+</td>
+<td class="px-4 py-3">
+<div class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20" title="MFA Enabled">
+<span class="material-symbols-outlined text-[14px]">shield_check</span>
+</div>
+</td>
+<td class="px-4 py-3 text-on-surface-variant font-mono-label text-xs">
+                                2 mins ago
+                            </td>
+<td class="px-4 py-3">
+<button class="text-on-surface-variant hover:text-on-surface transition-colors p-1"><span class="material-symbols-outlined text-[16px]">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#18181B] transition-colors cursor-pointer border-l-2 border-l-transparent">
+<td class="px-4 py-3">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-[#27272A] border border-[#3F3F46] flex items-center justify-center text-[10px] text-on-surface font-semibold">MD</div>
+<div class="flex flex-col">
+<span class="text-on-surface font-medium text-sm">Marcus Davis</span>
+<span class="text-on-surface-variant text-xs">mdavis@onyx.inc</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-3">
+<span class="px-2 py-0.5 rounded-[4px] bg-[#27272A] text-on-surface-variant border border-[#3F3F46] text-[11px] font-mono-label inline-flex items-center h-6">Analyst L2</span>
+</td>
+<td class="px-4 py-3">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 text-xs font-medium">
+<div class="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
+<span>Pending Setup</span>
+</div>
+</td>
+<td class="px-4 py-3">
+<div class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20" title="MFA Pending">
+<span class="material-symbols-outlined text-[14px]">shield_question</span>
+</div>
+</td>
+<td class="px-4 py-3 text-on-surface-variant font-mono-label text-xs">
+                                Never
+                            </td>
+<td class="px-4 py-3">
+<button class="text-on-surface-variant hover:text-on-surface transition-colors p-1"><span class="material-symbols-outlined text-[16px]">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-[#18181B] transition-colors cursor-pointer border-l-2 border-l-transparent">
+<td class="px-4 py-3">
+<div class="flex items-center gap-3">
+<img alt="James Wilson" class="w-7 h-7 rounded-full object-cover border border-[#3F3F46]" data-alt="A professional headshot of a man, dark background, corporate lighting, minimal style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg6Ml0XOZ9YOlLVSq7ZaVvrtGyDfKxdbFL2iZHtiHYeVhR-bJa3mVwHGflSVMHoHdVDPcVTg-t7dfnNwB2-pottuw7glSoZpQ8Tvg0INk_JklbVE6KnLQWiyNj2BmcAz4tRzJ5wx3-d8bhLYyKz3QN2yaPOi5QjxUfWsiAomm01dDPYEC24ZLvfcjbFZbycdluEL-yUuyb3Jarst0KrU26GiPFaWrqCbeLniZW-IwOWUKzYnDC8nI0"/>
+<div class="flex flex-col">
+<span class="text-on-surface font-medium text-sm">James Wilson</span>
+<span class="text-on-surface-variant text-xs">jwilson@onyx.inc</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-3">
+<span class="px-2 py-0.5 rounded-[4px] bg-error-container/20 text-error border border-error/30 text-[11px] font-mono-label inline-flex items-center h-6">Super Admin</span>
+</td>
+<td class="px-4 py-3">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 text-xs font-medium">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+<span>Active</span>
+</div>
+</td>
+<td class="px-4 py-3">
+<div class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20" title="MFA Enabled">
+<span class="material-symbols-outlined text-[14px]">shield_check</span>
+</div>
+</td>
+<td class="px-4 py-3 text-on-surface-variant font-mono-label text-xs">
+                                1 hr ago
+                            </td>
+<td class="px-4 py-3">
+<button class="text-on-surface-variant hover:text-on-surface transition-colors p-1"><span class="material-symbols-outlined text-[16px]">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-3 border-t border-[#27272A] bg-[#18181B] flex items-center justify-between text-xs text-on-surface-variant">
+<span>Showing 1-3 of 142 users</span>
+<div class="flex items-center gap-4">
+<button class="hover:text-on-surface transition-colors disabled:opacity-50 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">chevron_left</span> Prev</button>
+<button class="hover:text-on-surface transition-colors flex items-center gap-1">Next <span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Right Column: Inspector Panel -->
+<div class="w-[450px] bg-[#18181B] border-l border-[#27272A] flex flex-col shadow-[-4px_0_12px_rgba(0,0,0,0.2)] z-10 shrink-0">
+<!-- Inspector Header -->
+<div class="p-container-padding border-b border-[#27272A] bg-[#18181B]">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-sm text-[16px] text-on-surface font-medium">Role Configuration</h2>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors p-1"><span class="material-symbols-outlined text-[18px]">close</span></button>
+</div>
+<div class="flex items-center gap-4">
+<img alt="Sarah Chen" class="w-12 h-12 rounded-full object-cover border border-[#3F3F46]" data-alt="A professional headshot of a woman, Sarah Chen, dark background, corporate lighting, minimal style. Same as table row." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiTFbn0PpWHIcsrcNoBDvw4qYva-0jvXxndnWIwOD5whEF2i0yChWshkI6erybgS98bDdQepIM4X_8GOrGkjaNUnW_4vYRv5hJ7IX6kM3ECdbR8JWiRwB5GTSRRxce-bS6cjQwSk19IHH6E09Mam71eFaqVpvh_u4ahyRCOLt-ogZlbvz4OkdSBPbftfaMLKzzP_kGnjbHXELbGjsuD1adngGiKsZlKJtr_aNgbLly7LwdQ167RmhA"/>
+<div>
+<div class="font-medium text-on-surface text-base">Sarah Chen</div>
+<div class="text-on-surface-variant text-xs flex items-center gap-2 mt-1">
+<span class="px-1.5 py-0.5 rounded-[4px] bg-secondary-container/20 text-secondary border border-secondary/30 text-[10px] font-mono-label">Portfolio Mgr</span>
+<span class="w-1 h-1 rounded-full bg-[#47464A]"></span>
+<span>ID: 884-X92</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Permissions Body -->
+<div class="flex-1 overflow-y-auto p-container-padding space-y-6">
+<!-- Section 1 -->
+<div>
+<h3 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3">Market Intelligence</h3>
+<div class="border border-[#27272A] rounded-DEFAULT bg-[#09090B] divide-y divide-[#27272A]">
+<div class="p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm text-on-surface">Real-time Data Feeds</span>
+<span class="text-[11px] text-on-surface-variant">Access to Level 2 order book data.</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-on-surface-variant uppercase">Read</span>
+<button aria-checked="true" aria-label="Toggle Real-time Data Feeds access" class="w-8 h-4 rounded-full bg-[#3B82F6] relative cursor-pointer focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:ring-offset-1 focus:ring-offset-[#18181B]" role="switch">
+<div class="w-3 h-3 rounded-full bg-white absolute top-0.5 right-0.5 shadow-sm"></div>
+</button>
+</div>
+</div>
+<div class="p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm text-on-surface">Macro Indicators</span>
+<span class="text-[11px] text-on-surface-variant">Global economic reporting tools.</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-on-surface-variant uppercase">Read/Write</span>
+<button aria-checked="true" aria-label="Toggle Macro Indicators access" class="w-8 h-4 rounded-full bg-[#3B82F6] relative cursor-pointer focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:ring-offset-1 focus:ring-offset-[#18181B]" role="switch">
+<div class="w-3 h-3 rounded-full bg-white absolute top-0.5 right-0.5 shadow-sm"></div>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2 -->
+<div>
+<h3 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3">Trade Execution</h3>
+<div class="border border-[#27272A] rounded-DEFAULT bg-[#09090B] divide-y divide-[#27272A]">
+<div class="p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm text-on-surface">Order Placement</span>
+<span class="text-[11px] text-on-surface-variant">Initiate buy/sell orders.</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-on-surface-variant uppercase">Execute</span>
+<button aria-checked="true" aria-label="Toggle Order Placement access" class="w-8 h-4 rounded-full bg-[#3B82F6] relative cursor-pointer focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:ring-offset-1 focus:ring-offset-[#18181B]" role="switch">
+<div class="w-3 h-3 rounded-full bg-white absolute top-0.5 right-0.5 shadow-sm"></div>
+</button>
+</div>
+</div>
+<div class="p-3 flex items-center justify-between opacity-60">
+<div class="flex flex-col">
+<span class="text-sm text-on-surface">Override Limits</span>
+<span class="text-[11px] text-on-surface-variant">Bypass standard risk limits.</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-on-surface-variant uppercase">Admin</span>
+<button aria-checked="false" aria-label="Toggle Override Limits access" class="w-8 h-4 rounded-full bg-[#27272A] border border-[#3F3F46] relative cursor-pointer focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:ring-offset-1 focus:ring-offset-[#18181B]" role="switch">
+<div class="w-3 h-3 rounded-full bg-[#47464A] absolute top-0.5 left-0.5"></div>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3 -->
+<div>
+<h3 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3">Audit Trail</h3>
+<div class="border border-[#27272A] rounded-DEFAULT bg-[#09090B] divide-y divide-[#27272A]">
+<div class="p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm text-on-surface">View Logs</span>
+<span class="text-[11px] text-on-surface-variant">Access historical transaction records.</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-on-surface-variant uppercase">Read</span>
+<button aria-checked="true" aria-label="Toggle View Logs access" class="w-8 h-4 rounded-full bg-[#3B82F6] relative cursor-pointer focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:ring-offset-1 focus:ring-offset-[#18181B]" role="switch">
+<div class="w-3 h-3 rounded-full bg-white absolute top-0.5 right-0.5 shadow-sm"></div>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Inspector Footer Actions -->
+<div class="p-container-padding border-t border-[#27272A] bg-[#18181B] flex items-center justify-between gap-4 mt-auto">
+<button class="px-4 py-2 border border-[#3F3F46] rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors text-xs font-medium w-full">
+                    Reset to Defaults
+                </button>
+<button class="px-4 py-2 bg-[#3B82F6] text-white rounded-DEFAULT hover:bg-[#2563EB] transition-colors text-xs font-medium w-full shadow-[0_0_10px_rgba(59,130,246,0.3)]">
+                    Save Changes
+                </button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

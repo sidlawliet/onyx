@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  # PostgreSQL 16 Relational Database
+  db:
+    image: postgres:16-alpine
+    container_name: investops-db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-investops}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-investops}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - investops-network
+
+  # FastAPI Institutional Control Plane API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: investops-api
+    restart: always
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-investops}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-super-secret-investops-institutional-jwt-key-2026}
+      JWT_ALGORITHM: ${JWT_ALGORITHM:-HS256}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-480}
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      MOCK_BROKER_EXECUTION: ${MOCK_BROKER_EXECUTION:-true}
+      MOCK_LLM_RESPONSES: ${MOCK_LLM_RESPONSES:-true}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-mock-anthropic-key}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-mock-openai-key}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    networks:
+      - investops-network
+
+  # Next.js 14 Institutional Web Interface
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: investops-web
+    restart: always
+    environment:
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000/api/v1}
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - investops-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  investops-network:
+    driver: bridge

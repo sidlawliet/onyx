@@ -1,0 +1,24 @@
+# Dependencies & Environment
+node_modules/
+.next/
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+env/
+venv/
+.env
+.env.local
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Build & Dist
+dist/
+build/
+*.egg-info/
+.coverage
+htmlcov/

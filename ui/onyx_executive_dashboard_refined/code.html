@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onyx - Executive Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#0566d9",
+                      "on-background": "#e3e1ec",
+                      "on-tertiary-fixed": "#1f1a1a",
+                      "on-secondary": "#002e6a",
+                      "surface-tint": "#c8c6c8",
+                      "surface-container": "#1e1f26",
+                      "background": "#12131a",
+                      "tertiary-fixed-dim": "#cec4c4",
+                      "on-primary-fixed": "#1c1b1d",
+                      "on-primary-fixed-variant": "#474649",
+                      "inverse-surface": "#e3e1ec",
+                      "on-tertiary-container": "#7f7777",
+                      "on-error-container": "#ffdad6",
+                      "outline": "#919095",
+                      "primary": "#c8c6c8",
+                      "on-surface": "#e3e1ec",
+                      "on-secondary-fixed-variant": "#004395",
+                      "tertiary-fixed": "#ebe0df",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#adc6ff",
+                      "on-error": "#690005",
+                      "secondary": "#adc6ff",
+                      "primary-fixed": "#e5e1e4",
+                      "surface": "#12131a",
+                      "secondary-fixed": "#d8e2ff",
+                      "on-secondary-container": "#e6ecff",
+                      "surface-variant": "#33343c",
+                      "inverse-on-surface": "#2f3038",
+                      "error-container": "#93000a",
+                      "inverse-primary": "#5f5e60",
+                      "primary-fixed-dim": "#c8c6c8",
+                      "surface-container-lowest": "#0d0e15",
+                      "on-primary-container": "#7a787b",
+                      "primary-container": "#09090b",
+                      "on-tertiary": "#352f2f",
+                      "on-tertiary-fixed-variant": "#4c4545",
+                      "surface-container-high": "#292931",
+                      "on-secondary-fixed": "#001a42",
+                      "surface-dim": "#12131a",
+                      "on-surface-variant": "#c8c5ca",
+                      "outline-variant": "#47464a",
+                      "tertiary-container": "#0c0808",
+                      "on-primary": "#313032",
+                      "tertiary": "#cec4c4",
+                      "surface-container-highest": "#33343c",
+                      "surface-bright": "#383941",
+                      "surface-container-low": "#1a1b22"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "row-height-standard": "40px",
+                      "component-gap-sm": "4px",
+                      "component-gap-md": "8px",
+                      "unit": "8px",
+                      "container-padding": "24px",
+                      "row-height-dense": "32px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "table-data": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "mono-label": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "table-data": [
+                              "13px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "450"
+                              }
+                      ],
+                      "display": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "mono-label": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #09090B;
+        }
+        
+        .kpi-sparkline path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 2s linear forwards;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-primary-container text-on-surface font-body-md h-screen w-full flex overflow-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- SideNavBar -->
+<nav class="bg-[#12131A] text-on-surface-variant font-body-md text-body-md w-[60px] h-screen fixed left-0 top-0 border-r border-outline-variant flex flex-col justify-between py-4 z-20 transition-all duration-300 hover:w-[240px] group overflow-hidden">
+<div>
+<div class="px-3 mb-6 flex items-center h-8">
+<div class="flex items-center gap-3 w-full">
+<div class="w-8 h-8 min-w-[32px] rounded bg-surface-container-highest flex items-center justify-center overflow-hidden shrink-0 border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A sleek, minimalist, abstract geometric logo representing a highly advanced institutional investment platform called Onyx. The design relies on deep blacks, sharp angles, and subtle blue accents within a dark mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeVfnwYzUiT161-TJ88vd2M390WwXFvJBZ2MRT0abm4eWgiEyUUp-lEBwV9TLqvEdL3W1hP69sitTrHb2_mrgtBUymetfSdAdqflqPpQmbO_Hc7ZG1-iRyRJl-RwXe4Wgqn__q05daY3hkss5B044QU2FosgVa1vRN1FKKMHA-zy9OS5umAuIyfJqkRADJ3WkLp_tGXon69KL43tAZRRMbGAaagrLoiQFKAjDbolr4ULKHIW-vXpbU"/>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+<h1 class="font-display text-body-md font-bold text-on-surface">Onyx</h1>
+<p class="font-mono-label text-[10px] text-on-surface-variant uppercase tracking-wider">Institutional</p>
+</div>
+</div>
+</div>
+<ul class="flex flex-col gap-1 mt-2 px-2">
+<li>
+<a class="flex items-center gap-3 py-2 text-on-surface font-medium bg-surface-container-high rounded px-2 transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px] text-on-surface shrink-0" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Workflows</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded px-2 transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px] shrink-0">psychology</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Intelligence</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded px-2 transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px] shrink-0">travel_explore</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Research</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded px-2 transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px] shrink-0">insights</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Strategy</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded px-2 transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px] shrink-0">fact_check</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Approvals</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded px-2 transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px] shrink-0">play_circle</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Execution</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded px-2 transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px] shrink-0">monitor_heart</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Monitoring</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant px-2">
+<ul class="flex flex-col gap-1">
+<li>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded px-2 transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px] shrink-0">smart_toy</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Agents</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded px-2 transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px] shrink-0">description</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Reports</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded px-2 transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px] shrink-0">history</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Audit</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded px-2 transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px] shrink-0">settings</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Settings</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="bg-surface text-primary font-body-sm text-body-sm h-[48px] w-[calc(100%-60px)] fixed top-0 right-0 border-b border-outline-variant flex justify-between items-center px-4 ml-[60px] z-10 mr-[280px]">
+<div class="flex items-center gap-4 w-full max-w-2xl">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 font-mono-label text-mono-label text-on-surface-variant shrink-0">
+<a class="hover:text-on-surface transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface">Dashboard</span>
+</div>
+<!-- Search -->
+<div class="flex-1 flex items-center bg-[#18181B] border border-outline-variant rounded px-2 py-1.5 focus-within:border-on-surface-variant focus-within:ring-1 focus-within:ring-on-surface-variant transition-all ml-4">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">search</span>
+<input class="bg-transparent border-none text-on-surface focus:ring-0 text-body-sm py-0 pl-2 placeholder:text-on-surface-variant w-full" placeholder="Type a command or search..." type="text"/>
+<span class="font-mono-label text-[10px] text-on-surface-variant bg-surface-container-highest px-1.5 py-0.5 rounded border border-outline-variant shrink-0">⌘K</span>
+</div>
+</div>
+<div class="flex items-center gap-4 shrink-0">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center w-8 h-8 rounded hover:bg-surface-container-highest">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<div class="w-7 h-7 rounded bg-surface-container-highest border border-outline-variant overflow-hidden cursor-pointer hover:border-secondary-container transition-colors">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a corporate executive working in an institutional investment firm. The lighting is dramatic and moody, reflecting a high-stakes, dark-mode environment with deep blacks and subtle cool blue undertones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6hWqzIV7AcAnKwOQhRzuZgQe0WXyrR0pztW5goGqIL581hFRH_XmlNfKU5rV841-p34Ug-R_hI7dAKb1CBYAamPeI-_A266T61ruKPXs4sTex3h9eTI7ohVZuOiw83uRoWVv6EFWWcV2GarKPWIBEf8xzTIdtBr4LSQAj4vhpisubfGmSXHMjdMdjl0rRCRVh7t0Ny-AQl-X-s_TcxiqisLqxSdvAwJ9oLPwOCwCiLh9AWIUwTelA"/>
+</div>
+</div>
+</header>
+<!-- Global Context Rail -->
+<aside class="bg-[#12131A] text-on-surface font-body-sm w-[280px] h-screen fixed right-0 top-0 border-l border-outline-variant flex flex-col z-20 pt-[48px] overflow-y-auto">
+<div class="p-4 flex flex-col gap-6">
+<div>
+<h3 class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider mb-3">Context</h3>
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant">Workflow Stage</span>
+<span class="font-mono-label text-on-surface bg-surface-container-high px-1.5 py-0.5 rounded border border-outline-variant">Monitoring</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant">Progress</span>
+<span class="font-mono-label text-on-surface">94%</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider mb-3">Generation metadata</h3>
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">smart_toy</span> Model</span>
+<span class="font-mono-label text-on-surface">Onyx-V4</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">verified</span> Confidence</span>
+<span class="font-mono-label text-[#22c55e]">99.2%</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant">Current Version</span>
+<span class="font-mono-label text-on-surface">v2.4.1</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider mb-3">Quick Actions</h3>
+<div class="flex flex-col gap-2">
+<button class="flex items-center gap-2 w-full px-3 py-2 bg-surface-container-high border border-outline-variant rounded text-on-surface hover:bg-surface-container-highest transition-colors font-mono-label">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+                    Export PDF
+                </button>
+<button class="flex items-center gap-2 w-full px-3 py-2 bg-surface-container-high border border-outline-variant rounded text-on-surface hover:bg-surface-container-highest transition-colors font-mono-label">
+<span class="material-symbols-outlined text-[16px]">share</span>
+                    Share Dashboard
+                </button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[60px] mt-[48px] mr-[280px] p-4 w-[calc(100%-340px)] h-[calc(100vh-48px)] overflow-y-auto overflow-x-hidden relative">
+<div class="max-w-[1400px] mx-auto flex flex-col gap-4">
+<!-- Investment Pipeline -->
+<section class="bg-[#18181B] border border-[#27272A] rounded p-4 relative overflow-hidden group">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary text-[18px]">linear_scale</span>
+<h2 class="font-headline-sm text-body-md font-semibold text-on-surface">Investment Pipeline</h2>
+</div>
+<div class="flex items-center justify-between w-full px-4">
+<!-- Stage 1 -->
+<div class="flex flex-col items-center gap-1.5 flex-1 relative z-10">
+<div class="w-8 h-8 rounded border border-secondary bg-surface-container-lowest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[16px]">travel_explore</span>
+</div>
+<span class="font-mono-label text-[10px] text-on-surface-variant uppercase">Research</span>
+<span class="font-mono-label text-body-md text-on-surface">142</span>
+</div>
+<div class="flex-1 h-[1px] bg-secondary opacity-50 relative -top-3"></div>
+<!-- Stage 2 -->
+<div class="flex flex-col items-center gap-1.5 flex-1 relative z-10">
+<div class="w-8 h-8 rounded border border-secondary bg-surface-container-lowest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[16px]">inventory_2</span>
+</div>
+<span class="font-mono-label text-[10px] text-on-surface-variant uppercase">Portfolio</span>
+<span class="font-mono-label text-body-md text-on-surface">86</span>
+</div>
+<div class="flex-1 h-[1px] bg-outline-variant relative -top-3"></div>
+<!-- Stage 3 -->
+<div class="flex flex-col items-center gap-1.5 flex-1 relative z-10">
+<div class="w-8 h-8 rounded border border-outline-variant border-dashed bg-surface-container-lowest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">fact_check</span>
+</div>
+<span class="font-mono-label text-[10px] text-on-surface-variant uppercase">Approval</span>
+<span class="font-mono-label text-body-md text-on-surface">12</span>
+</div>
+<div class="flex-1 h-[1px] bg-outline-variant relative -top-3"></div>
+<!-- Stage 4 -->
+<div class="flex flex-col items-center gap-1.5 flex-1 relative z-10">
+<div class="w-8 h-8 rounded border border-outline-variant border-dashed bg-surface-container-lowest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+</div>
+<span class="font-mono-label text-[10px] text-on-surface-variant uppercase">Execution</span>
+<span class="font-mono-label text-body-md text-on-surface">4</span>
+</div>
+<div class="flex-1 h-[1px] bg-outline-variant relative -top-3"></div>
+<!-- Stage 5 -->
+<div class="flex flex-col items-center gap-1.5 flex-1 relative z-10">
+<div class="w-8 h-8 rounded border border-outline-variant border-dashed bg-surface-container-lowest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">monitor_heart</span>
+</div>
+<span class="font-mono-label text-[10px] text-on-surface-variant uppercase">Monitoring</span>
+<span class="font-mono-label text-body-md text-on-surface">2401</span>
+</div>
+</div>
+</section>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-12 gap-4">
+<!-- Left Column (KPIs & Chart) -->
+<div class="col-span-12 xl:col-span-8 flex flex-col gap-4">
+<!-- KPI Cards -->
+<div class="grid grid-cols-3 gap-4">
+<!-- KPI 1 -->
+<div class="bg-[#18181B] border border-[#27272A] rounded p-3 flex flex-col justify-between h-24 relative overflow-hidden">
+<div class="flex justify-between items-start z-10">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Total Portfolio Value</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">account_balance</span>
+</div>
+<div class="z-10 mt-2">
+<span class="font-mono-label text-headline-sm text-on-surface">$14.2B</span>
+</div>
+<!-- Sparkline Green -->
+<svg class="absolute bottom-0 left-0 w-full h-8 kpi-sparkline opacity-30" preserveaspectratio="none" viewbox="0 0 100 30">
+<path d="M0,30 L10,25 L20,28 L30,15 L40,18 L50,10 L60,15 L70,5 L80,8 L90,2 L100,0" fill="none" stroke="#22c55e" stroke-width="1.5"></path>
+</svg>
+</div>
+<!-- KPI 2 -->
+<div class="bg-[#18181B] border border-[#27272A] rounded p-3 flex flex-col justify-between h-24 relative overflow-hidden">
+<div class="flex justify-between items-start z-10">
+<span class="font-body-sm text-body-sm text-on-surface-variant">YTD PnL</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">trending_up</span>
+</div>
+<div class="z-10 flex items-baseline gap-2 mt-2">
+<span class="font-mono-label text-headline-sm text-on-surface">+$842M</span>
+<span class="text-[#22c55e] font-mono-label text-[10px]">+6.3%</span>
+</div>
+<!-- Sparkline Green -->
+<svg class="absolute bottom-0 left-0 w-full h-8 kpi-sparkline opacity-30" preserveaspectratio="none" viewbox="0 0 100 30">
+<path d="M0,30 L20,20 L40,25 L60,10 L80,15 L100,0" fill="none" stroke="#22c55e" stroke-width="1.5"></path>
+</svg>
+</div>
+<!-- KPI 3 -->
+<div class="bg-[#18181B] border border-[#27272A] rounded p-3 flex flex-col justify-between h-24 relative overflow-hidden">
+<div class="flex justify-between items-start z-10">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Active Risk</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">warning</span>
+</div>
+<div class="z-10 flex flex-col mt-1">
+<div class="flex items-baseline gap-2">
+<span class="font-mono-label text-headline-sm text-on-surface">2.41%</span>
+<span class="text-[#ef4444] font-mono-label text-[10px]">+0.1%</span>
+</div>
+<div class="flex items-center gap-1 mt-1 text-[10px] text-on-surface-variant font-mono-label">
+<span class="material-symbols-outlined text-[10px]">smart_toy</span> Onyx-V4 (98% conf)
+                        </div>
+</div>
+<!-- Sparkline Red -->
+<svg class="absolute bottom-0 left-0 w-full h-8 kpi-sparkline opacity-30" preserveaspectratio="none" viewbox="0 0 100 30">
+<path d="M0,0 L20,10 L40,5 L60,20 L80,15 L100,30" fill="none" stroke="#ef4444" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+<!-- Performance Chart Area -->
+<div class="bg-[#18181B] border border-[#27272A] rounded p-4 h-[320px] flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-body-md font-semibold text-on-surface">Performance vs Benchmark</h3>
+<div class="flex items-center gap-1 mt-1 text-[10px] text-on-surface-variant font-mono-label">
+<span class="material-symbols-outlined text-[10px]">smart_toy</span> Generated by Onyx-V4 (99.5% conf)
+                        </div>
+</div>
+<div class="flex bg-surface-container-lowest rounded border border-outline-variant p-[2px]">
+<button class="px-2 py-0.5 text-mono-label font-mono-label rounded text-on-surface-variant hover:text-on-surface">1W</button>
+<button class="px-2 py-0.5 text-mono-label font-mono-label rounded text-on-surface-variant hover:text-on-surface">1M</button>
+<button class="px-2 py-0.5 text-mono-label font-mono-label rounded bg-[#33343c] text-on-surface border border-[#47464a]">YTD</button>
+<button class="px-2 py-0.5 text-mono-label font-mono-label rounded text-on-surface-variant hover:text-on-surface">1Y</button>
+</div>
+</div>
+<div class="flex-1 w-full bg-transparent border-b border-l border-outline-variant relative">
+<!-- Faux grid lines -->
+<div class="absolute inset-0 grid grid-rows-4 grid-cols-1 w-full h-full pointer-events-none">
+<div class="border-t border-outline-variant opacity-20"></div>
+<div class="border-t border-outline-variant opacity-20"></div>
+<div class="border-t border-outline-variant opacity-20"></div>
+<div class="border-t border-outline-variant opacity-20"></div>
+</div>
+<!-- Placeholder for actual chart -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0,100 L10,90 L20,95 L30,80 L40,85 L50,60 L60,70 L70,40 L80,45 L90,20 L100,10" fill="none" stroke="#adc6ff" stroke-width="1.5"></path>
+<path d="M0,100 L10,95 L20,98 L30,85 L40,90 L50,75 L60,80 L70,60 L80,65 L90,45 L100,40" fill="none" stroke="#47464a" stroke-dasharray="2,2" stroke-width="1"></path>
+</svg>
+</div>
+</div>
+<!-- Active Operations -->
+<div class="bg-[#18181B] border border-[#27272A] rounded">
+<div class="p-3 border-b border-[#27272A] flex justify-between items-center">
+<h3 class="font-body-md font-semibold text-on-surface">Active Operations</h3>
+<button class="text-[12px] font-mono-label text-secondary hover:underline uppercase tracking-wide">View All</button>
+</div>
+<!-- Table -->
+<div class="w-full">
+<div class="grid grid-cols-12 gap-2 px-3 py-2 border-b border-[#27272A] font-mono-label text-[10px] text-on-surface-variant uppercase tracking-wider">
+<div class="col-span-4">Operation / Agent</div>
+<div class="col-span-3">Target</div>
+<div class="col-span-3">Status</div>
+<div class="col-span-2 text-right">Time Active</div>
+</div>
+<div class="grid grid-cols-12 gap-2 px-3 py-2 min-h-[32px] items-center hover:bg-[#27272A]/30 transition-colors border-b border-[#27272A]/50">
+<div class="col-span-4 flex items-center gap-2 font-mono-label text-[12px] text-on-surface">
+<span class="material-symbols-outlined text-[14px] text-secondary">smart_toy</span>
+                                    Quant-Alpha-04
+                                </div>
+<div class="col-span-3 font-mono-label text-[12px] text-on-surface-variant">US Tech Sector</div>
+<div class="col-span-3 flex items-center gap-1.5 font-mono-label text-[12px]">
+<div class="w-1.5 h-1.5 rounded-full bg-[#22c55e]"></div>
+<span class="text-on-surface-variant">Running</span>
+</div>
+<div class="col-span-2 text-right font-mono-label text-[12px] text-on-surface-variant">04h 12m</div>
+</div>
+<div class="grid grid-cols-12 gap-2 px-3 py-2 min-h-[32px] items-center hover:bg-[#27272A]/30 transition-colors border-b border-[#27272A]/50 bg-secondary-container/5 border-l-2 border-l-[#3B82F6]">
+<div class="col-span-4 flex items-center gap-2 font-mono-label text-[12px] text-on-surface">
+<span class="material-symbols-outlined text-[14px] text-error">fact_check</span>
+                                    Block Trade Exec
+                                </div>
+<div class="col-span-3 font-mono-label text-[12px] text-on-surface-variant">TSLA 450k shares</div>
+<div class="col-span-3 flex items-center gap-1.5 font-mono-label text-[12px]">
+<div class="w-1.5 h-1.5 rounded-full bg-error"></div>
+<span class="text-error">Pending Approval</span>
+</div>
+<div class="col-span-2 text-right font-mono-label text-[12px] text-on-surface-variant">12m ago</div>
+</div>
+<div class="grid grid-cols-12 gap-2 px-3 py-2 min-h-[32px] items-center hover:bg-[#27272A]/30 transition-colors">
+<div class="col-span-4 flex items-center gap-2 font-mono-label text-[12px] text-on-surface">
+<span class="material-symbols-outlined text-[14px] text-outline">description</span>
+                                    ESG Compliance Scan
+                                </div>
+<div class="col-span-3 font-mono-label text-[12px] text-on-surface-variant">Global Equities</div>
+<div class="col-span-3 flex items-center gap-1.5 font-mono-label text-[12px]">
+<div class="w-1.5 h-1.5 rounded-full bg-outline"></div>
+<span class="text-on-surface-variant">Scheduled</span>
+</div>
+<div class="col-span-2 text-right font-mono-label text-[12px] text-on-surface-variant">In 2h</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (Donut & Timeline) -->
+<div class="col-span-12 xl:col-span-4 flex flex-col gap-4">
+<!-- Sector Allocation -->
+<div class="bg-[#18181B] border border-[#27272A] rounded p-4 h-[240px] flex flex-col">
+<h3 class="font-body-md font-semibold text-on-surface mb-2">Sector Allocation</h3>
+<div class="flex-1 flex items-center justify-center relative">
+<!-- Faux Donut Chart using borders -->
+<div class="w-24 h-24 rounded-full border-[12px] border-[#3B82F6] relative">
+<!-- overlay partial borders to fake segments -->
+<div class="absolute inset-[-12px] rounded-full border-[12px] border-t-[#004395] border-r-transparent border-b-transparent border-l-transparent transform rotate-45"></div>
+<div class="absolute inset-[-12px] rounded-full border-[12px] border-r-[#47464a] border-t-transparent border-b-transparent border-l-transparent transform rotate-[20deg]"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-mono-label text-[10px] text-on-surface-variant">AUM</span>
+<span class="font-mono-label text-body-md text-on-surface">$14.2B</span>
+</div>
+</div>
+</div>
+<div class="flex justify-center gap-4 mt-2 font-mono-label text-[10px]">
+<div class="flex items-center gap-1"><div class="w-1.5 h-1.5 bg-[#3B82F6] rounded-sm"></div> Tech</div>
+<div class="flex items-center gap-1"><div class="w-1.5 h-1.5 bg-[#004395] rounded-sm"></div> Fin</div>
+<div class="flex items-center gap-1"><div class="w-1.5 h-1.5 bg-[#47464a] rounded-sm"></div> Other</div>
+</div>
+</div>
+<!-- Audit Log / Timeline -->
+<div class="bg-[#18181B] border border-[#27272A] rounded p-4 flex-1">
+<h3 class="font-body-md font-semibold text-on-surface mb-4">Recent Activity</h3>
+<div class="relative border-l border-[#27272A] ml-1.5 flex flex-col gap-4">
+<!-- Log Item 1 -->
+<div class="pl-4 relative">
+<div class="absolute w-1.5 h-1.5 rounded-full bg-[#3B82F6] -left-[3.5px] top-1.5 ring-4 ring-[#18181B]"></div>
+<div class="flex flex-col gap-0.5">
+<span class="font-mono-label text-[10px] text-on-surface-variant uppercase tracking-wider">10:42 AM</span>
+<span class="font-body-sm font-medium text-on-surface">Execution Completed</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant leading-tight">Algorithm Alpha-2 successfully executed trade block #4928.</span>
+</div>
+</div>
+<!-- Log Item 2 -->
+<div class="pl-4 relative">
+<div class="absolute w-1.5 h-1.5 rounded-full bg-outline-variant -left-[3.5px] top-1.5 ring-4 ring-[#18181B]"></div>
+<div class="flex flex-col gap-0.5">
+<span class="font-mono-label text-[10px] text-on-surface-variant uppercase tracking-wider">09:15 AM</span>
+<span class="font-body-sm font-medium text-on-surface">Approval Required</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant leading-tight">Risk parameters exceeded on proposed APPL strategy shift.</span>
+<button class="mt-1.5 self-start px-2 py-0.5 bg-transparent border border-[#3F3F46] rounded text-[12px] font-mono-label text-on-surface hover:border-secondary transition-colors">Review</button>
+</div>
+</div>
+<!-- Log Item 3 -->
+<div class="pl-4 relative">
+<div class="absolute w-1.5 h-1.5 rounded-full bg-outline-variant -left-[3.5px] top-1.5 ring-4 ring-[#18181B]"></div>
+<div class="flex flex-col gap-0.5">
+<span class="font-mono-label text-[10px] text-on-surface-variant uppercase tracking-wider">08:00 AM</span>
+<span class="font-body-sm font-medium text-on-surface">Daily Report Generated</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant leading-tight">System compiled overnight market data into Morning Briefing.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

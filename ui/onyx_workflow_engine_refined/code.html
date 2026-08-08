@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Workflows - Onyx Operations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#e3e1ec",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-secondary-fixed": "#001a42",
+                        "on-primary": "#313032",
+                        "secondary": "#adc6ff",
+                        "surface-container-low": "#1a1b22",
+                        "tertiary-fixed-dim": "#cec4c4",
+                        "surface-container-highest": "#33343c",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#d8e2ff",
+                        "inverse-on-surface": "#2f3038",
+                        "surface-dim": "#12131a",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "surface-bright": "#383941",
+                        "surface-tint": "#c8c6c8",
+                        "outline-variant": "#47464a",
+                        "secondary-container": "#0566d9",
+                        "on-tertiary-fixed-variant": "#4c4545",
+                        "on-error": "#690005",
+                        "tertiary": "#cec4c4",
+                        "inverse-surface": "#e3e1ec",
+                        "inverse-primary": "#5f5e60",
+                        "surface-container": "#1e1f26",
+                        "on-primary-container": "#7a787b",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#1c1b1d",
+                        "surface-container-high": "#292931",
+                        "on-secondary": "#002e6a",
+                        "surface": "#12131a",
+                        "on-tertiary-fixed": "#1f1a1a",
+                        "on-surface-variant": "#c8c5ca",
+                        "outline": "#919095",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#474649",
+                        "on-secondary-container": "#e6ecff",
+                        "on-tertiary-container": "#7f7777",
+                        "surface-variant": "#33343c",
+                        "on-tertiary": "#352f2f",
+                        "on-background": "#e3e1ec",
+                        "primary-container": "#09090b",
+                        "surface-container-lowest": "#0d0e15",
+                        "primary": "#c8c6c8",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "background": "#12131a",
+                        "tertiary-container": "#0c0808",
+                        "tertiary-fixed": "#ebe0df",
+                        "primary-fixed": "#e5e1e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "row-height-standard": "40px",
+                        "component-gap-md": "8px",
+                        "unit": "8px",
+                        "component-gap-sm": "4px",
+                        "gutter": "16px",
+                        "container-padding": "24px",
+                        "row-height-dense": "32px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "mono-label": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "table-data": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "mono-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "table-data": ["13px", { "lineHeight": "16px", "fontWeight": "450" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="w-[240px] h-screen fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant flex flex-col justify-between py-6 z-50">
+<div>
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-DEFAULT bg-primary-container border border-outline-variant flex items-center justify-center">
+<img class="w-5 h-5 rounded-DEFAULT object-cover" data-alt="A minimalist logo for Onyx Operations, featuring a dark sleek gemstone icon with sharp geometric edges, set against a dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRzW2eMT1hX0EIN9OSEDYMWH5NIhphLjK_XxJjI_9sB0HwuqJTLSkrBKaa6p-aLmvR8zwTOssJILRlkHI-1ZLKfkDK2ujEmvvFGSEGcKNMkxqOv0Cm065D3OmKXO_UyTTNFAdEL7OGUzwFGz_DnsTbANHZzaQRgCT-guIouS_hvdhcK_toTChyY3_fMCLNB-EXpfsuOqPV0doXV-TjG0gSMbRShEUMD2fEknrGWkTyy77lUGIJHfca"/>
+</div>
+<div>
+<h1 class="font-display text-headline-sm font-semibold text-on-surface">Onyx Operations</h1>
+<p class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider">Institutional Grade</p>
+</div>
+</div>
+</div>
+<ul class="flex flex-col gap-1">
+<li class="h-row-height-standard flex items-center text-secondary font-bold border-l-2 border-secondary pl-4 bg-surface-container-low cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined mr-3 text-lg" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+                    Workflows
+                </li>
+<li class="h-row-height-standard flex items-center text-on-surface-variant hover:text-on-surface pl-4 hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined mr-3 text-lg">psychology</span>
+                    Intelligence
+                </li>
+<li class="h-row-height-standard flex items-center text-on-surface-variant hover:text-on-surface pl-4 hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined mr-3 text-lg">travel_explore</span>
+                    Research
+                </li>
+<li class="h-row-height-standard flex items-center text-on-surface-variant hover:text-on-surface pl-4 hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined mr-3 text-lg">insights</span>
+                    Strategy
+                </li>
+<li class="h-row-height-standard flex items-center text-on-surface-variant hover:text-on-surface pl-4 hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined mr-3 text-lg">fact_check</span>
+                    Approvals
+                </li>
+<li class="h-row-height-standard flex items-center text-on-surface-variant hover:text-on-surface pl-4 hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined mr-3 text-lg">play_circle</span>
+                    Execution
+                </li>
+<li class="h-row-height-standard flex items-center text-on-surface-variant hover:text-on-surface pl-4 hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined mr-3 text-lg">monitor_heart</span>
+                    Monitoring
+                </li>
+</ul>
+</div>
+<div>
+<div class="px-6 py-4 mt-4 mb-2 border-t border-outline-variant/30">
+<p class="font-mono-label text-mono-label text-on-surface-variant mb-2">SYSTEM</p>
+</div>
+<ul class="flex flex-col gap-1">
+<li class="h-row-height-standard flex items-center text-on-surface-variant hover:text-on-surface pl-4 hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined mr-3 text-lg">smart_toy</span>
+                    Agents
+                </li>
+<li class="h-row-height-standard flex items-center text-on-surface-variant hover:text-on-surface pl-4 hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined mr-3 text-lg">description</span>
+                    Reports
+                </li>
+<li class="h-row-height-standard flex items-center text-on-surface-variant hover:text-on-surface pl-4 hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined mr-3 text-lg">history</span>
+                    Audit
+                </li>
+<li class="h-row-height-standard flex items-center text-on-surface-variant hover:text-on-surface pl-4 hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined mr-3 text-lg">settings</span>
+                    Settings
+                </li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 ml-[240px] flex flex-col h-screen overflow-hidden bg-background">
+<!-- TopNavBar -->
+<header class="h-row-height-standard bg-surface border-b border-outline-variant flex justify-between items-center px-gutter flex-shrink-0 z-40">
+<div class="flex items-center gap-2 text-body-sm">
+<span class="text-on-surface-variant hover:text-primary transition-all duration-200 cursor-pointer">Workflows</span>
+<span class="text-on-surface-variant">/</span>
+<span class="text-on-surface font-medium">All Pipelines</span>
+</div>
+<div class="flex-1 flex justify-center max-w-lg mx-auto">
+<div class="w-full relative flex items-center group">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant/70 text-[18px]">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-full pl-10 pr-12 py-1.5 text-body-sm text-on-surface focus:outline-none focus:border-[#3B82F6] focus:bg-primary-container transition-all placeholder:text-on-surface-variant/50" placeholder="Search pipelines, agents, or entities..." type="text"/>
+<div class="absolute right-3 flex items-center gap-1">
+<span class="px-1.5 py-0.5 rounded border border-outline-variant bg-surface-container-low text-mono-label text-on-surface-variant text-[10px]">⌘</span>
+<span class="px-1.5 py-0.5 rounded border border-outline-variant bg-surface-container-low text-mono-label text-on-surface-variant text-[10px]">K</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-all duration-200">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<div class="w-7 h-7 rounded-full bg-surface-variant border border-outline-variant overflow-hidden ml-2 cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="A small circular avatar of a professional in a dark corporate setting, low key lighting, minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNvGbKU8EXJ4bNmCcZDqxgrIDUWObm06l9ro2r4yW70bCaYfwHWup9caRNRr5aw0KafG0E6wsbFN_ikFdiQbGzBroYiHLCH3YDCplyS4UwZ6piumc92nP41hmjiDKnGuBuwvwASX0SQ9t87DSP866lMTxSpdg641eLyP9hTHfKl6bQLTZvDKnlgdIf_FOlVCg755khc8VgMImZnZ5hDTkDdbEYiheGk3IIseTiLPbWrbBG2lnZQvhN"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto p-container-padding flex flex-col gap-6">
+<!-- Page Header & Actions -->
+<div class="flex justify-between items-end pb-4 border-b border-outline-variant/50">
+<div>
+<h2 class="font-display text-display text-on-surface mb-1">Active Workflows</h2>
+<p class="text-on-surface-variant">Monitoring institutional investment pipelines and agent tasks.</p>
+</div>
+<div class="flex gap-3">
+<div class="flex bg-surface-container-lowest border border-outline-variant rounded-DEFAULT overflow-hidden">
+<button class="px-3 py-1.5 text-body-sm font-medium bg-surface-container-low text-on-surface border-r border-outline-variant">Active</button>
+<button class="px-3 py-1.5 text-body-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors">Completed</button>
+</div>
+</div>
+</div>
+<!-- Filters -->
+<div class="flex gap-4 items-center">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">filter_list</span>
+<input class="w-full bg-primary-container border border-outline-variant rounded-DEFAULT pl-9 pr-3 py-1.5 text-body-sm text-on-surface focus:outline-none focus:border-[#3B82F6] focus:ring-1 focus:ring-[#3B82F6] transition-colors placeholder:text-on-surface-variant/50" placeholder="Filter active view..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 border border-outline-variant rounded-DEFAULT text-body-sm text-on-surface-variant hover:text-on-surface hover:border-outline flex items-center gap-2 bg-primary-container">
+                        Agent <span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+<button class="px-3 py-1.5 border border-outline-variant rounded-DEFAULT text-body-sm text-on-surface-variant hover:text-on-surface hover:border-outline flex items-center gap-2 bg-primary-container">
+                        Status <span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+</div>
+</div>
+<!-- List View -->
+<div class="flex flex-col border border-outline-variant rounded-lg bg-surface-container-lowest overflow-hidden">
+<!-- Header Row -->
+<div class="flex items-center px-4 py-2 border-b border-outline-variant bg-surface-container-low/50 text-mono-label font-mono-label text-on-surface-variant uppercase tracking-wider">
+<div class="w-10"></div>
+<div class="w-24">ID</div>
+<div class="flex-1">Pipeline</div>
+<div class="w-36">Stage</div>
+<div class="w-48">Agent</div>
+<div class="w-28">Status</div>
+<div class="w-24 text-right">Time</div>
+</div>
+<!-- Row 1: Running -->
+<div class="group border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center px-4 py-2 text-table-data font-table-data">
+<div class="w-10 flex justify-center text-on-surface-variant group-hover:text-primary">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+<div class="w-24">
+<span class="font-mono-label text-[11px] text-on-surface-variant">WF-9042</span>
+</div>
+<div class="flex-1 pr-4">
+<span class="font-medium text-on-surface line-clamp-1">Equities Alpha Generation - Q3 Tech</span>
+</div>
+<div class="w-36">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full border border-[#3F3F46] bg-primary-container text-[11px] text-on-surface-variant">
+                                Sentiment Analysis
+                            </span>
+</div>
+<div class="w-48 flex items-center gap-2 relative group/agent">
+<span class="material-symbols-outlined text-[14px] text-secondary">psychology</span>
+<span class="text-on-surface-variant">Quant_Alpha_Bot</span>
+<div class="absolute bottom-full left-0 mb-1 hidden group-hover/agent:block z-50">
+<div class="bg-inverse-surface text-inverse-on-surface text-[11px] px-2 py-1 rounded shadow-lg whitespace-nowrap">
+            Confidence: 94% | Version: 2.4.1
+        </div>
+</div>
+</div>
+<div class="w-28 flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse"></div>
+<span class="text-on-surface">Running</span>
+</div>
+<div class="w-24 text-right text-on-surface-variant tabular-nums text-[12px]">
+                            2m ago
+                        </div>
+</div>
+</div>
+<!-- Row 2: Success (Expanded) -->
+<div class="border-b border-outline-variant bg-surface-container-low/30 border-l-2 border-l-[#3B82F6]">
+<div class="flex items-center px-4 py-2 text-table-data font-table-data cursor-pointer">
+<div class="w-10 flex justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</div>
+<div class="w-24">
+<span class="font-mono-label text-[11px] text-on-surface-variant">WF-9041</span>
+</div>
+<div class="flex-1 pr-4">
+<span class="font-medium text-on-surface line-clamp-1">Risk Assessment: Project Horizon</span>
+</div>
+<div class="w-36">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full border border-[#3F3F46] bg-primary-container text-[11px] text-on-surface-variant">
+                                Final Review
+                            </span>
+</div>
+<div class="w-48 flex items-center gap-2 relative group/agent">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">admin_panel_settings</span>
+<span class="text-on-surface-variant">Risk_Compliance_AI</span>
+<div class="absolute bottom-full left-0 mb-1 hidden group-hover/agent:block z-50">
+<div class="bg-inverse-surface text-inverse-on-surface text-[11px] px-2 py-1 rounded shadow-lg whitespace-nowrap">
+            Confidence: 98% | Version: 1.9.0
+        </div>
+</div>
+</div>
+<div class="w-28 flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+<span class="text-on-surface">Completed</span>
+</div>
+<div class="w-24 text-right text-on-surface-variant tabular-nums text-[12px]">
+                            1h ago
+                        </div>
+</div>
+<!-- Expanded Content -->
+<div class="pl-[144px] pr-4 pb-4 pt-2">
+<div class="border-l border-outline-variant ml-2 pl-6 relative">
+<div class="absolute w-2 h-2 rounded-full bg-[#3F3F46] -left-[4.5px] top-1.5"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="text-body-sm font-medium text-on-surface">Data Ingestion</h4>
+<p class="text-[12px] text-on-surface-variant">Parsed 42 market reports and SEC filings.</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[11px] font-mono-label text-on-surface-variant">10:14 AM</span>
+<span class="text-[10px] text-on-surface-variant mt-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">smart_toy</span> Parser_Bot_v1</span>
+</div>
+</div>
+<div class="absolute w-2 h-2 rounded-full bg-[#3F3F46] -left-[4.5px] top-[54px]"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="text-body-sm font-medium text-on-surface">Sentiment &amp; Volatility Modeling</h4>
+<p class="text-[12px] text-on-surface-variant">Generated VaR metrics. Detected minor anomalies in sector beta.</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[11px] font-mono-label text-on-surface-variant">10:45 AM</span>
+<span class="text-[10px] text-on-surface-variant mt-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">smart_toy</span> Quant_Modeler_v2</span>
+</div>
+</div>
+<div class="absolute w-2 h-2 rounded-full border border-dashed border-[#3B82F6] bg-primary-container -left-[4.5px] top-[102px]"></div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-body-sm font-medium text-[#3B82F6]">Awaiting Human Approval</h4>
+<p class="text-[12px] text-on-surface-variant">Requires sign-off from Lead Analyst before publishing.</p>
+</div>
+<button class="px-3 py-1 bg-transparent border border-[#3F3F46] hover:border-outline text-body-sm rounded-DEFAULT text-on-surface transition-colors">Review</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Row 3: Pending -->
+<div class="group border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer opacity-70">
+<div class="flex items-center px-4 py-2 text-table-data font-table-data">
+<div class="w-10 flex justify-center text-on-surface-variant group-hover:text-primary">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+<div class="w-24">
+<span class="font-mono-label text-[11px] text-on-surface-variant">WF-9040</span>
+</div>
+<div class="flex-1 pr-4">
+<span class="font-medium text-on-surface line-clamp-1">Macro Indicators Weekly Update</span>
+</div>
+<div class="w-36">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full border border-[#3F3F46] bg-primary-container text-[11px] text-on-surface-variant">
+                                Queued
+                            </span>
+</div>
+<div class="w-48 flex items-center gap-2 relative group/agent">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">query_stats</span>
+<span class="text-on-surface-variant">Macro_Aggregator</span>
+<div class="absolute bottom-full left-0 mb-1 hidden group-hover/agent:block z-50">
+<div class="bg-inverse-surface text-inverse-on-surface text-[11px] px-2 py-1 rounded shadow-lg whitespace-nowrap">
+            Confidence: N/A | Version: 3.0.1
+        </div>
+</div>
+</div>
+<div class="w-28 flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant"></div>
+<span class="text-on-surface-variant">Pending</span>
+</div>
+<div class="w-24 text-right text-on-surface-variant tabular-nums text-[12px]">
+                            3h ago
+                        </div>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Global Context Rail -->
+<aside class="w-[260px] border-l border-outline-variant bg-surface-container-lowest flex flex-col flex-shrink-0">
+<div class="p-6 border-b border-outline-variant/50">
+<h3 class="text-body-sm font-semibold text-on-surface mb-4">Context</h3>
+<div class="flex flex-col gap-4">
+<div>
+<span class="text-[11px] font-mono-label text-on-surface-variant uppercase tracking-wider block mb-1">Stage</span>
+<span class="text-body-sm text-on-surface font-medium">Workflow Orchestration</span>
+</div>
+<div>
+<span class="text-[11px] font-mono-label text-on-surface-variant uppercase tracking-wider block mb-1">Version</span>
+<span class="text-body-sm text-on-surface font-medium">v1.0.8</span>
+</div>
+<div>
+<span class="text-[11px] font-mono-label text-on-surface-variant uppercase tracking-wider block mb-1">Last Modified</span>
+<span class="text-body-sm text-on-surface font-medium tabular-nums">Oct 24, 2023 - 14:32</span>
+</div>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-body-sm font-semibold text-on-surface mb-4">Quick Actions</h3>
+<div class="flex flex-col gap-2">
+<button class="bg-[#3B82F6] hover:bg-blue-600 text-white px-4 py-2 rounded-DEFAULT text-body-sm font-medium flex items-center justify-center gap-2 transition-colors w-full">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                New Pipeline
+            </button>
+<button class="bg-surface-container-low border border-outline-variant hover:bg-surface-container-high text-on-surface px-4 py-2 rounded-DEFAULT text-body-sm font-medium flex items-center justify-center gap-2 transition-colors w-full">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+                Resume All
+            </button>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</body></html>

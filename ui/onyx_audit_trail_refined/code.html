@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onyx Audit Trail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c8c6c8",
+                        "tertiary": "#cec4c4",
+                        "surface-container-highest": "#33343c",
+                        "outline": "#919095",
+                        "primary-fixed": "#e5e1e4",
+                        "surface-container-high": "#292931",
+                        "surface-container": "#1e1f26",
+                        "on-primary-container": "#7a787b",
+                        "on-tertiary-fixed": "#1f1a1a",
+                        "background": "#12131a",
+                        "surface-dim": "#12131a",
+                        "on-secondary": "#002e6a",
+                        "on-secondary-fixed": "#001a42",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary": "#352f2f",
+                        "on-tertiary-fixed-variant": "#4c4545",
+                        "on-error": "#690005",
+                        "surface-variant": "#33343c",
+                        "outline-variant": "#47464a",
+                        "on-surface": "#e3e1ec",
+                        "on-surface-variant": "#c8c5ca",
+                        "on-primary": "#313032",
+                        "tertiary-fixed": "#ebe0df",
+                        "secondary-fixed": "#d8e2ff",
+                        "secondary-container": "#0566d9",
+                        "tertiary-container": "#0c0808",
+                        "surface-container-lowest": "#0d0e15",
+                        "on-primary-fixed": "#1c1b1d",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-primary-fixed-variant": "#474649",
+                        "inverse-surface": "#e3e1ec",
+                        "surface-tint": "#c8c6c8",
+                        "tertiary-fixed-dim": "#cec4c4",
+                        "primary-container": "#09090b",
+                        "on-background": "#e3e1ec",
+                        "on-secondary-container": "#e6ecff",
+                        "primary": "#c8c6c8",
+                        "secondary": "#adc6ff",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#5f5e60",
+                        "surface-container-low": "#1a1b22",
+                        "inverse-on-surface": "#2f3038",
+                        "surface-bright": "#383941",
+                        "on-tertiary-container": "#7f7777",
+                        "surface": "#12131a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-padding": "24px",
+                        "unit": "8px",
+                        "component-gap-sm": "4px",
+                        "component-gap-md": "8px",
+                        "row-height-dense": "32px",
+                        "row-height-standard": "40px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "mono-label": ["Geist"],
+                        "display": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "table-data": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "mono-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "table-data": ["13px", { "lineHeight": "16px", "fontWeight": "450" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@500&family=Inter:wght@400;450;600&display=swap');
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen w-[240px] border-r border-outline-variant bg-surface-container-low flex flex-col py-6 z-40">
+<div class="px-container-padding mb-8">
+<h1 class="font-headline-sm text-headline-sm tracking-tighter text-on-surface">Investment Operations</h1>
+<p class="font-mono-label text-mono-label text-on-surface-variant mt-1">Institutional Suite</p>
+</div>
+<div class="flex flex-col flex-grow px-4 gap-component-gap-sm">
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:bg-surface-container transition-all cursor-pointer duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+<span class="font-mono-label text-mono-label">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded bg-surface-container-high text-secondary border-l-2 border-secondary cursor-pointer duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+<span class="font-mono-label text-mono-label">Audit Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:bg-surface-container transition-all cursor-pointer duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">query_stats</span>
+<span class="font-mono-label text-mono-label">Monitoring</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:bg-surface-container transition-all cursor-pointer duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+<span class="font-mono-label text-mono-label">Access Control</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:bg-surface-container transition-all cursor-pointer duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+<span class="font-mono-label text-mono-label">Reporting</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:bg-surface-container transition-all cursor-pointer duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span class="font-mono-label text-mono-label">Settings</span>
+</a>
+</div>
+<div class="px-container-padding mt-auto mb-6">
+<button class="w-full flex items-center justify-center gap-2 bg-transparent border border-outline-variant text-on-surface py-2 rounded font-mono-label text-mono-label hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span>
+                Export Audit Trail
+            </button>
+</div>
+<div class="flex flex-col px-4 gap-component-gap-sm border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:bg-surface-container transition-all cursor-pointer duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">contact_support</span>
+<span class="font-mono-label text-mono-label">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:bg-surface-container transition-all cursor-pointer duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">dns</span>
+<span class="font-mono-label text-mono-label">System Status</span>
+</a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="ml-[240px] flex-1 flex flex-col h-full bg-background relative">
+<!-- Header / TopNav (simplified for workspace context, combining requirements) -->
+<header class="flex justify-between items-center px-container-padding h-14 border-b border-outline-variant bg-background sticky top-0 z-30">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="font-body-sm text-body-sm">Audit</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Activity Logs</h2>
+</div>
+<div class="relative ml-8 flex items-center border border-outline-variant rounded bg-surface-container-low px-3 py-1.5 focus-within:border-secondary">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px] mr-2">search</span>
+<input class="bg-transparent border-none text-body-sm font-body-sm text-on-surface placeholder:text-on-surface-variant focus:ring-0 p-0 w-80 h-5 outline-none" placeholder="Search Audit Logs, Users, Commands..." type="text"/>
+<div class="ml-2 px-1.5 py-0.5 rounded border border-outline-variant bg-surface-variant text-on-surface-variant font-mono-label text-[10px]">Cmd+K</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 border border-outline-variant rounded px-3 py-1.5 text-body-sm font-body-sm text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                    Last 24h
+                    <span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+<button class="flex items-center gap-2 bg-secondary-container text-on-secondary-container rounded px-4 py-1.5 text-body-sm font-body-sm hover:opacity-90 transition-opacity">
+                    Export Log
+                </button>
+<div class="w-px h-6 bg-outline-variant mx-2"></div>
+<div class="flex gap-2 text-on-surface-variant">
+<button class="hover:text-on-surface transition-colors cursor-pointer"><span class="material-symbols-outlined">notifications</span></button>
+<button class="hover:text-on-surface transition-colors cursor-pointer"><span class="material-symbols-outlined">settings</span></button>
+<button class="hover:text-on-surface transition-colors cursor-pointer"><span class="material-symbols-outlined">help</span></button>
+</div>
+</div>
+</header>
+<!-- Global Context Rail -->
+<div class="border-b border-outline-variant bg-surface-container-low px-container-padding py-2 flex items-center justify-between z-20 sticky top-14">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">policy</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Stage:</span>
+<span class="text-body-sm font-body-sm text-on-surface font-medium">Compliance &amp; Audit</span>
+</div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Total Events (24h):</span>
+<span class="text-body-sm font-body-sm text-on-surface font-medium font-mono">142,891</span>
+</div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Security Flags:</span>
+<span class="text-body-sm font-body-sm text-error font-medium font-mono">3</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-xs font-mono-label flex items-center gap-1 text-on-surface hover:text-secondary transition-colors"><span class="material-symbols-outlined text-[14px]">download</span> Export Trail</button>
+<button class="text-xs font-mono-label flex items-center gap-1 text-on-surface hover:text-secondary transition-colors"><span class="material-symbols-outlined text-[14px]">manage_search</span> Search Deep</button>
+</div>
+</div>
+<!-- Content Canvas -->
+<div class="flex-1 overflow-auto p-container-padding flex flex-col gap-6">
+<!-- Activity Pulse -->
+<section class="grid grid-cols-4 gap-4">
+<div class="bg-surface-container border border-outline-variant rounded p-4 flex flex-col justify-between">
+<span class="text-on-surface-variant font-mono-label text-mono-label">Total Events (24h)</span>
+<div class="mt-2 flex items-end gap-2">
+<span class="text-on-surface font-display text-display">142,891</span>
+<span class="text-secondary mb-1 flex items-center text-xs"><span class="material-symbols-outlined text-[14px]">trending_up</span> 12%</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded p-4 flex flex-col justify-between">
+<span class="text-on-surface-variant font-mono-label text-mono-label">Security Flags</span>
+<div class="mt-2 flex items-end gap-2">
+<span class="text-error font-display text-display">3</span>
+<span class="text-error mb-1 flex items-center text-xs"><span class="material-symbols-outlined text-[14px]">warning</span> Action Req</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded p-4 flex flex-col justify-between">
+<span class="text-on-surface-variant font-mono-label text-mono-label">Agent Decisions</span>
+<div class="mt-2 flex items-end justify-between w-full">
+<span class="text-on-surface font-display text-display">8,402</span>
+<div class="flex flex-col items-end">
+<span class="text-on-surface-variant text-xs">Automated</span>
+<span class="font-mono text-[10px] text-secondary">Model: Onyx-7B-v4.2</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded p-4 flex flex-col justify-between">
+<span class="text-on-surface-variant font-mono-label text-mono-label">User Actions</span>
+<div class="mt-2 flex items-end gap-2">
+<span class="text-on-surface font-display text-display">1,204</span>
+<span class="text-on-surface-variant mb-1 text-xs">Manual interventions</span>
+</div>
+</div>
+</section>
+<div class="flex-1 flex gap-6 overflow-hidden">
+<!-- Forensic Event Log -->
+<div class="flex-1 bg-surface-container border border-outline-variant rounded flex flex-col overflow-hidden">
+<!-- Filters Bar -->
+<div class="border-b border-outline-variant p-2 bg-surface-container-low flex items-center gap-4 overflow-x-auto">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px] ml-2">filter_list</span>
+<div class="flex gap-2">
+<button class="border border-outline-variant bg-surface px-3 py-1 rounded-full text-xs font-mono-label text-on-surface flex items-center gap-1 hover:border-secondary transition-colors">
+                                Severity: All <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</button>
+<button class="border border-outline-variant bg-surface px-3 py-1 rounded-full text-xs font-mono-label text-on-surface flex items-center gap-1 hover:border-secondary transition-colors">
+                                Category: Trading <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</button>
+<button class="border border-outline-variant bg-surface px-3 py-1 rounded-full text-xs font-mono-label text-on-surface flex items-center gap-1 hover:border-secondary transition-colors">
+                                Actor: Any <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</button>
+</div>
+</div>
+<!-- Table -->
+<div class="flex-1 overflow-auto">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-container border-b border-outline-variant z-10">
+<tr>
+<th class="py-2 px-4 font-mono-label text-mono-label text-on-surface-variant font-medium">Timestamp (UTC)</th>
+<th class="py-2 px-4 font-mono-label text-mono-label text-on-surface-variant font-medium">Entity</th>
+<th class="py-2 px-4 font-mono-label text-mono-label text-on-surface-variant font-medium">Action Type</th>
+<th class="py-2 px-4 font-mono-label text-mono-label text-on-surface-variant font-medium">Resource</th>
+<th class="py-2 px-4 font-mono-label text-mono-label text-on-surface-variant font-medium">Status</th>
+<th class="py-2 px-4 font-mono-label text-mono-label text-on-surface-variant font-medium">Trace ID</th>
+</tr>
+</thead>
+<tbody class="font-mono text-[12px] text-on-surface">
+<!-- Row 1 - Active -->
+<tr class="border-b border-outline-variant bg-surface-container-high border-l-2 border-l-secondary cursor-pointer hover:bg-surface-container-highest transition-colors">
+<td class="py-1 px-4 whitespace-nowrap">2023-10-27T08:14:32.451Z</td>
+<td class="py-1 px-4">usr_892bA4</td>
+<td class="py-1 px-4">Trade_Exec</td>
+<td class="py-1 px-4">AAPL</td>
+<td class="py-1 px-4">
+<div class="flex items-center gap-1.5 font-table-data text-[13px]">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary-container"></div>
+                                            Success
+                                        </div>
+</td>
+<td class="py-1 px-4 text-on-surface font-medium">0x7f8a9b2c1d3e</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant cursor-pointer hover:bg-surface-container-highest transition-colors">
+<td class="py-1 px-4 whitespace-nowrap text-on-surface-variant">2023-10-27T08:14:31.902Z</td>
+<td class="py-1 px-4">agt_algo_v4</td>
+<td class="py-1 px-4">Risk_Calc</td>
+<td class="py-1 px-4">Portfolio_Beta</td>
+<td class="py-1 px-4">
+<div class="flex items-center gap-1.5 font-table-data text-[13px]">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary-container"></div>
+                                            Success
+                                        </div>
+</td>
+<td class="py-1 px-4 text-on-surface font-medium">0x88bb9a11f44d</td>
+</tr>
+<!-- Row 3 - Warning -->
+<tr class="border-b border-outline-variant cursor-pointer hover:bg-surface-container-highest transition-colors">
+<td class="py-1 px-4 whitespace-nowrap text-on-surface-variant">2023-10-27T08:12:05.118Z</td>
+<td class="py-1 px-4">sys_auth</td>
+<td class="py-1 px-4">Access_Req</td>
+<td class="py-1 px-4">API_KEY_77X</td>
+<td class="py-1 px-4">
+<div class="flex items-center gap-1.5 font-table-data text-[13px]">
+<div class="w-1.5 h-1.5 rounded-full bg-[#F59E0B]"></div>
+                                            Warning
+                                        </div>
+</td>
+<td class="py-1 px-4 text-on-surface font-medium">0x33ca2910ee2a</td>
+</tr>
+<!-- Row 4 - Error -->
+<tr class="border-b border-outline-variant cursor-pointer hover:bg-surface-container-highest transition-colors">
+<td class="py-1 px-4 whitespace-nowrap text-on-surface-variant">2023-10-27T08:10:44.821Z</td>
+<td class="py-1 px-4">usr_unk_99</td>
+<td class="py-1 px-4">Config_Mod</td>
+<td class="py-1 px-4">Threshold_Limits</td>
+<td class="py-1 px-4">
+<div class="flex items-center gap-1.5 font-table-data text-[13px]">
+<div class="w-1.5 h-1.5 rounded-full bg-error"></div>
+                                            Blocked
+                                        </div>
+</td>
+<td class="py-1 px-4 text-on-surface font-medium">0x99ff2a10be7c</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Event Detail Sidebar -->
+<div class="w-[400px] bg-surface-container border border-outline-variant rounded flex flex-col overflow-hidden">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Event Details</h3>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-auto p-4 flex flex-col gap-6">
+<!-- Metadata summary -->
+<div class="grid grid-cols-2 gap-y-4 gap-x-2">
+<div>
+<p class="text-mono-label font-mono-label text-on-surface-variant">Trace ID</p>
+<p class="text-body-sm font-body-sm text-on-surface font-mono mt-1">0x7f8a9b2c1d3e</p>
+</div>
+<div>
+<p class="text-mono-label font-mono-label text-on-surface-variant">Timestamp</p>
+<p class="text-body-sm font-body-sm text-on-surface font-mono mt-1">2023-10-27T08:14:32.451Z</p>
+</div>
+</div>
+<!-- JSON Payload -->
+<div>
+<p class="text-mono-label font-mono-label text-on-surface-variant mb-2">JSON Payload</p>
+<div class="bg-surface border border-outline-variant rounded p-3 overflow-x-auto">
+<pre class="font-mono-label text-mono-label text-on-surface text-[11px] leading-relaxed">{
+  "event_id": "evt_9982a1b",
+  "type": "trade.execution",
+  "actor": {
+    "id": "usr_892bA4",
+    "role": "trader_exec"
+  },
+  "resource": {
+    "symbol": "AAPL",
+    "market": "NASDAQ",
+    "volume": 1500,
+    "price_usd": 173.50,
+    "order_type": "market"
+  },
+  "context": {
+    "ip": "192.168.1.45",
+    "geo": "US-NY",
+    "user_agent": "OnyxTerm/v4.2.1"
+  }
+}
+                                </pre>
+</div>
+</div>
+<!-- Chain of Custody -->
+<div>
+<p class="text-mono-label font-mono-label text-on-surface-variant mb-2">Chain of Custody</p>
+<div class="border-l border-outline-variant ml-2 pl-4 flex flex-col gap-4 relative">
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full border-2 border-secondary bg-surface-container"></div>
+<p class="text-body-sm font-body-sm text-on-surface">Order Initiated</p>
+<p class="text-xs text-on-surface-variant font-mono mt-0.5">usr_892bA4 · 08:14:30.112Z</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full border-2 border-secondary bg-surface-container"></div>
+<p class="text-body-sm font-body-sm text-on-surface">Risk Approved</p>
+<p class="text-xs text-on-surface-variant font-mono mt-0.5">agt_risk_sys · 08:14:31.004Z</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-secondary"></div>
+<p class="text-body-sm font-body-sm text-on-surface">Execution Confirmed</p>
+<p class="text-xs text-on-surface-variant font-mono mt-0.5">mkt_gateway · 08:14:32.451Z</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
